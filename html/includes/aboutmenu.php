@@ -1,6 +1,6 @@
 <?php 
 	$linkText = array("About the Collection", "Lehman Collection Finding Aid", "About text searching", "Contact Us");
-	$linkLink = array("/lehman/about/", "http://findingaids.cul.columbia.edu/ead/nnc-rb/ldpd_4078518\" target=\"_blank\"", "/lehman/text/", "/lehman/feedback/");
+	$linkLink = array("/about/", "http://findingaids.cul.columbia.edu/ead/nnc-rb/ldpd_4078518\" target=\"_blank\"", "/text/", "/feedback/");
 	$linkList = "";
 
 	for ($i=0; $i < count($linkText); $i++) {

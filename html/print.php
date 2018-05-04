@@ -39,11 +39,11 @@
         } // end ELSE cookie lehman not set
 
 function writeCookieError() {
-        header("Location: /lehman/aboutrestriction.php");
+        header("Location: /aboutrestriction.php");
 }
 
 function isUserInAgreement() {
-        header("Location: /lehman/restricted.php?" . $_SERVER['QUERY_STRING']);
+        header("Location: /restricted.php?" . $_SERVER['QUERY_STRING']);
 }
 
 	include_once('includes/iprestriction.php');
@@ -205,7 +205,7 @@ function isUserInAgreement() {
     print "\n";
     print '<head>'."\n";
     print '  <title>Printable document</title>'."\n";
-    print '  <script src="/lehman/js/func.js"></script>'."\n";
+    print '  <script src="/js/func.js"></script>'."\n";
     print '  <style>'."\n";
     print '    * { font-family:verdana, arial; font-size:10px;}'."\n";
     print '    BODY { margin-top:0px; padding-top:0px; }'."\n";

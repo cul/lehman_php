@@ -3,7 +3,7 @@
 <?php
   if (($page != "/index") && ($page != "index"))
   {
-    print '<div style="padding:5px 0px; 5px 0px;"><span style="font-size:10px;"><a href="/lehman/">Lehman Special Correspondence Files</a> &gt; <span style="color:#222;">';
+    print '<div style="padding:5px 0px; 5px 0px;"><span style="font-size:10px;"><a href="/">Lehman Special Correspondence Files</a> &gt; <span style="color:#222;">';
     switch($page)
     {
       case "about":
@@ -25,13 +25,13 @@
         print "Lehman Special Correspondence Files Document";
         break;
       case "feedback":
-        print "<a href=\"/lehman/about/\">About the Collection</a> &gt; Contact Us";
+        print "<a href=\"/about/\">About the Collection</a> &gt; Contact Us";
         break;
       case "submitted.feedback":
-        print "<a href=\"/lehman/about/\">About the Collection</a> &gt; <a href=\"feedback.php\">Contact us</a> &gt; Thank You";
+        print "<a href=\"/about/\">About the Collection</a> &gt; <a href=\"feedback.php\">Contact us</a> &gt; Thank You";
         break;
       case "text":
-        print "<a href=\"/lehman/about/\">About the Collection</a> &gt; About Searching";
+        print "<a href=\"/about/\">About the Collection</a> &gt; About Searching";
         break;
       case "citation":
         print "Citation";

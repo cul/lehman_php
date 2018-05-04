@@ -4,7 +4,7 @@
 
   <?php
     $linkText = array("About the Collection", "Lehman Collection<br />Finding Aid <img src=\"http://www.columbia.edu/cu/lweb/digital/collections/cul/texts/images/newW.png\" title=\"Opens new window\" alt=\"Opens new window\" />", "About Searching", "Contact Us");
-    $linkLink = array("/lehman/about/", "http://www.columbia.edu/cu/lweb/eresources/archives/rbml/Lehman,H/\" target=\"_blank\"", "/lehman/text/", "/lehman/feedback/");
+    $linkLink = array("/about/", "http://www.columbia.edu/cu/lweb/eresources/archives/rbml/Lehman,H/\" target=\"_blank\"", "/text/", "/feedback/");
     $linkList = "";
 
     for ($i=0; $i < count($linkText); $i++)

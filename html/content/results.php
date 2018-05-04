@@ -16,7 +16,7 @@
 			exit; don't serve up page
 */
 
-	$myQuery = str_replace("/lehman/", '', $_SERVER['REQUEST_URI']);
+	$myQuery = str_replace("/", '', $_SERVER['REQUEST_URI']);
 
 	if (isset($_COOKIE["lehman"]) && ( !isset($_POST['agreed']) || $_POST['agreed'] != "no")) {
 		// renew for another 1/2 hour
@@ -53,11 +53,11 @@
 	} // end ELSE cookie lehman not set
 
 function writeCookieError() {
-	header("Location: /lehman/aboutrestriction.php");
+	header("Location: /aboutrestriction.php");
 }
 
 function isUserInAgreement($myQuery) {
-	header("Location: /lehman/restricted.php?" . $myQuery);
+	header("Location: /restricted.php?" . $myQuery);
 }
 
 /*
@@ -98,7 +98,7 @@ function isUserInAgreement($myQuery) {
 
 	// no document id --> error
 
-	$myQuery = str_replace("/lehman/" . $_SERVER['QUERY_STRING'], '', $_SERVER['REQUEST_URI']);
+	$myQuery = str_replace("/" . $_SERVER['QUERY_STRING'], '', $_SERVER['REQUEST_URI']);
 	$myQuery = urldecode(str_replace("?&q=",'',$myQuery));
 	if ($myQuery == "")
 		$myQuery = "document_id:" . $_GET['document_id'];
@@ -144,7 +144,7 @@ function isUserInAgreement($myQuery) {
 		}
 
 		$itemNo = 0;
-        	$itemQuery = str_replace("/lehman/", '', $_SERVER['REQUEST_URI']);
+        	$itemQuery = str_replace("/", '', $_SERVER['REQUEST_URI']);
 
 		if (preg_match('/\&itemNo\=/',$itemQuery)) {
                         preg_match('/itemNo=([^`]*?$)/',$itemQuery,$itemMatches);
@@ -226,13 +226,13 @@ function isUserInAgreement($myQuery) {
                         	$nextDocId = $docs[0]['document_id'];
                 }
 
-		$return = "<a style='text-decoration:none;' href=\"/lehman/search/?&wt=phps&". makeQuery($_SESSION['query']) . "&rows=20&start=";
+		$return = "<a style='text-decoration:none;' href=\"/search/?&wt=phps&". makeQuery($_SESSION['query']) . "&rows=20&start=";
 		if($itemNo) 
 			$return .= ($itemNo - ($itemNo%20));
 		else
 			$return .= "0";
 
-		$return .= "\">Return to search results</a>&#160;<span style='color:#ddd'>|</span>&#160;<a href=\"/lehman/\" style='text-decoration:none;'>Start new search</a>"; //</p></div>";
+		$return .= "\">Return to search results</a>&#160;<span style='color:#ddd'>|</span>&#160;<a href=\"/\" style='text-decoration:none;'>Start new search</a>"; //</p></div>";
 
 		$prevmsg = "&laquo;&nbsp;previous search result";
 		$nextmsg = "next search result&nbsp;&raquo;";
@@ -320,7 +320,7 @@ print '<h2 style="color:#369;font-size:12px;">Citation (Chicago Manual of Style)
 				print "<div style='padding-left:8px;'>";
                                 writeCitation($file_unittitle, $genreform1, $file_unitdate_display, $document_id, "Herbert H. Lehman Papers, Special Correspondence Files;Rare Book and Manuscript Library, Columbia University Library.", $env);
 
-				print "<a href=\"/lehman/about/#citation\" target=\"_blank\" class='noUnderline' style='font-size:10px;font-weight:bold'>About this citation <img src=\"http://www.columbia.edu/cu/lweb/digital/collections/cul/texts/images/newW.png\" /></a>";
+				print "<a href=\"/about/#citation\" target=\"_blank\" class='noUnderline' style='font-size:10px;font-weight:bold'>About this citation <img src=\"http://www.columbia.edu/cu/lweb/digital/collections/cul/texts/images/newW.png\" /></a>";
 				print "<br /></div>";
                         }
       }
@@ -351,7 +351,7 @@ print '</div></div>';
 				// took away float:right;
 				print '<div id="ocrText" class="ocrText" align="center" style="border:1px solid #ccc;width:900px;height:500px;text-align:center;overflow:auto;display:none;">';
 				print "<div id=\"ocrWindow\" style=\"width:500px;float:left;\">";
-				print "<div style=\"border:1px solid #ddd; background:#f3f8fd;padding:5px;margin:10px;\">Please note: this text may be incomplete.  For more information about this OCR, view the \"Words in Documents\" section in <a href=\"/lehman/text/\">About Searching</a>.</div>\n";
+				print "<div style=\"border:1px solid #ddd; background:#f3f8fd;padding:5px;margin:10px;\">Please note: this text may be incomplete.  For more information about this OCR, view the \"Words in Documents\" section in <a href=\"/text/\">About Searching</a>.</div>\n";
                         	print htmlspecialchars($ocr) . '</div>';
 				print "</div>\n";
 				print "<br clear=all />\n";
@@ -655,6 +655,6 @@ function getSimilarDocs($file_unittitle, $appUrl) {
 
 	if (substr($file_unittitle,-1) == ".")
 		$file_unittitle = substr($file_unittitle,0,-1);
-	print "There are $numFound documents related to $file_unittitle.&#160;&#160;<strong><a class=\"noUnderline\" href=\"/lehman/search/?wt=phps&" . makeQuery(urldecode($qUrl)) . "\">View documents&#160;&#187;</a></strong>\n";
+	print "There are $numFound documents related to $file_unittitle.&#160;&#160;<strong><a class=\"noUnderline\" href=\"/search/?wt=phps&" . makeQuery(urldecode($qUrl)) . "\">View documents&#160;&#187;</a></strong>\n";
 } // end FUNCTION getSimilarDocs
 ?>

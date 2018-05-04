@@ -1,4 +1,4 @@
-<form method="get" action="/lehman/search/" id="searchForm">
+<form method="get" action="/search/" id="searchForm">
   <p>
     <label for="file_unittitle_t">Correspondent:&#160;&#160;</label>
     <select name="file_unittitle_t"><!--style="width:300px;" -->
@@ -74,7 +74,7 @@
 			$month = array("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec");
 		?>
 
-                <p>Words in Documents (<a href="/lehman/text/">about this option</a>): &#160;&#160;
+                <p>Words in Documents (<a href="/text/">about this option</a>): &#160;&#160;
 		<input type="text" size="30" name="freetext" value="<?php 
 				$queryFields = array("file_unittitle", "file_unittitle_t", "file_unitdate_display", "file_unitdate_display_t", "freetext", "year", "month", "day", "ocr", "document_id", "genreform1_t", "file_unitdate", "sort", "asc", "desc", "subject_name_t", "unitdate_iso", "_t", "fromYear", "fromMonth", "fromDay", "toYear", "toMonth", "toDay", "subject_terms_t");
 
@@ -91,7 +91,7 @@
 				}
 			?>" />
                 &#160;<input type="checkbox" name="ocr">Search only text</ocr></p> 
-<p><label for="dateRange">Date</label> (<a href="/lehman/text/#date">about this option</a>):&#160;From <select name="fromYear" id="fromYear">
+<p><label for="dateRange">Date</label> (<a href="/text/#date">about this option</a>):&#160;From <select name="fromYear" id="fromYear">
 <option value="">[year]</option>
 <?php
         foreach($dupArr as $date) {

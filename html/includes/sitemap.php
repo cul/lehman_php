@@ -11,7 +11,7 @@
                 extract($facet_counts);
                 foreach($facet_fields as $facet) {
                         foreach(array_keys($facet) as $key) {
-                                print "<li><a href=\"/lehman/search/?wt=phps&file_unittitle_t=%22" . htmlentities($key, ENT_QUOTES, 'UTF-8') . "%22&rows=20\">$key</a></li>\n";
+                                print "<li><a href=\"/search/?wt=phps&file_unittitle_t=%22" . htmlentities($key, ENT_QUOTES, 'UTF-8') . "%22&rows=20\">$key</a></li>\n";
                         }
                 } // end FOREACH facet_field
 		print "</ul>";

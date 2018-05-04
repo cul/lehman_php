@@ -3,7 +3,7 @@
 <head>
   <title><?php echo $htmlTitle; ?></title>
 
-  <script type="text/javascript" language="JavaScript" src="/lehman/js/lweb.general.js"></script>
+  <script type="text/javascript" language="JavaScript" src="/js/lweb.general.js"></script>
 
   <script type="text/javascript">
     var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
@@ -16,13 +16,13 @@
     pageTracker._trackPageview();
   </script>
 
-  <link type="text/css" href="/lehman/css/lweb.css" rel="stylesheet"></link>
+  <link type="text/css" href="/css/lweb.css" rel="stylesheet"></link>
 
-  <script type="text/javascript" language="JavaScript" src="/lehman/js/func.js"></script>
+  <script type="text/javascript" language="JavaScript" src="/js/func.js"></script>
 
-  <link type="text/css" rel="stylesheet" href="/lehman/css/general.css">
+  <link type="text/css" rel="stylesheet" href="/css/general.css">
 
-  <link type="text/css" href="/lehman/css/lehman.css" rel="stylesheet"></link>
+  <link type="text/css" href="/css/lehman.css" rel="stylesheet"></link>
 
   <?php if (isset($addlHeader)) echo $addlHeader; ?>
 

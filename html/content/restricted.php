@@ -8,9 +8,9 @@
 
                     <h2>Lehman Special Correspondence Files: Agreement to Terms of Use</h2>
 
-                    <?php $myQuery = str_replace("/lehman/" . $_SERVER['QUERY_STRING'], '', $_SERVER['REQUEST_URI']); ?>
+                    <?php $myQuery = str_replace("/" . $_SERVER['QUERY_STRING'], '', $_SERVER['REQUEST_URI']); ?>
 
-                    <form method="post" action="/lehman/<?php echo $_SERVER['QUERY_STRING'] ?>">
+                    <form method="post" action="/<?php echo $_SERVER['QUERY_STRING'] ?>">
 
                       <?php include_once('includes/terms.php'); ?>
 

@@ -1,4 +1,4 @@
-        <form method="get" action="/lehman/search.php" id="searchForm">
+        <form method="get" action="/search.php" id="searchForm">
 
 	<table class="searchTable">
 		<tr>

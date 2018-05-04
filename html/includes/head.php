@@ -36,11 +36,11 @@
     pageTracker._trackPageview();
   </script>
 
-  <script type="text/javascript" language="JavaScript" src="/lehman/js/lweb.general.js"></script>
-  <script type="text/javascript" language="JavaScript" src="/lehman/js/func.js"></script>
+  <script type="text/javascript" language="JavaScript" src="/js/lweb.general.js"></script>
+  <script type="text/javascript" language="JavaScript" src="/js/func.js"></script>
 
-  <link type="text/css" href="/lehman/css/lweb.css" rel="stylesheet"></link>
-  <link type="text/css" href="/lehman/css/general.css" rel="stylesheet"></link>
-  <link type="text/css" href="/lehman/css/lehman.css" rel="stylesheet"></link>
+  <link type="text/css" href="/css/lweb.css" rel="stylesheet"></link>
+  <link type="text/css" href="/css/general.css" rel="stylesheet"></link>
+  <link type="text/css" href="/css/lehman.css" rel="stylesheet"></link>
 
   <?php if (isset($addlHeader)) echo $addlHeader; ?>

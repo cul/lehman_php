@@ -5,7 +5,7 @@
                 <h2 style="text-align:center;">Search Results</h2>
 
                 <div style="float:right;width:100px;">
-                  <a href="/lehman/">New search</a>
+                  <a href="/">New search</a>
                 </div>
 
                 <div id="searchBox" style="padding:0; margin:0;">
@@ -1029,12 +1029,12 @@
 			print "<tr onMouseOver=\"this.style.background='#f3f8fd'\" onMouseOut=\"this.style.background='#fff'\">"; 
  			$modifiedID = substr($document_id,9);
 			// replaced results.php with /lehman/
-			print "<td width=15% valign=top style='font-size:11px;'><a href=\"/lehman/document_id=$document_id?$urlAdd\" class=\"noUnderline\" style='color:#000'>" . $modifiedID . "</a></td>\n";
-			print "<td width=35% valign=top style='font-size:11px;'><a href=\"/lehman/document_id=$document_id?$urlAdd\" class=\"noUnderline\" style='color:#000'>$file_unittitle</a></td>\n";
-			print "<td width=25% valign=top style='font-size:11px;'><a href=\"/lehman/document_id=$document_id?$urlAdd\" class=\"noUnderline\" style='color:#000'>$genreform1 ($pages page";
+			print "<td width=15% valign=top style='font-size:11px;'><a href=\"/document_id=$document_id?$urlAdd\" class=\"noUnderline\" style='color:#000'>" . $modifiedID . "</a></td>\n";
+			print "<td width=35% valign=top style='font-size:11px;'><a href=\"/document_id=$document_id?$urlAdd\" class=\"noUnderline\" style='color:#000'>$file_unittitle</a></td>\n";
+			print "<td width=25% valign=top style='font-size:11px;'><a href=\"/document_id=$document_id?$urlAdd\" class=\"noUnderline\" style='color:#000'>$genreform1 ($pages page";
 				if ($pages > 1) echo 's';
 			print ")</a></td>\n";
-			print "<td width=25% valign=top style='font-size:11px;'><a href=\"/lehman/document_id=$document_id?$urlAdd\" class=\"noUnderline\" style='color:#000'>";
+			print "<td width=25% valign=top style='font-size:11px;'><a href=\"/document_id=$document_id?$urlAdd\" class=\"noUnderline\" style='color:#000'>";
 			if ( isset($file_unitdate_display) )	
 				echo $file_unitdate_display;
 			else

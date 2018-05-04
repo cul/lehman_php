@@ -14,11 +14,11 @@
     pageTracker._trackPageview();
   </script>
 
-  <link href="/lehman/includes/lweb.css" rel="stylesheet" type="text/css"></link>
+  <link href="/css/lweb.css" rel="stylesheet" type="text/css"></link>
 
-  <script type="text/javascript" language="JavaScript" src="/lehman/includes/func.js"></script>
+  <script type="text/javascript" language="JavaScript" src="/js/func.js"></script>
 
-  <link rel="stylesheet" type="text/css" href="/lehman/includes/general.css">
+  <link rel="stylesheet" type="text/css" href="/css/general.css">
 
   <style type="text/css">
     .noUnderline {
@@ -97,9 +97,9 @@
 
 <table cellpadding="0" cellspacing="0" border="0" width="100%">
   <tr>
-    <td bgcolor="#cccccc" width="1"><img src="/lehman/images/spacer1px.gif" width="1" height="1" alt="" border="0"></td>
+    <td bgcolor="#cccccc" width="1"><img src="/images/spacer1px.gif" width="1" height="1" alt="" border="0"></td>
     <td valign="top"><a href="http://library.columbia.edu/indiv/rbml.html" title="Columbia University Libraries Rare Book and Manuscript Library" alt="Columbia University Libraries Rare Book and Manuscript Library"><img src="http://library.columbia.edu/content/dam/libraryweb/general/images/banners/banner.rbml.gif" width="340" height="90" alt="Columbia University Libraries Rare Book and Manuscript Library" title="Columbia University Libraries Rare Book and Manuscript Library" border="0"></a></td><td valign="middle" align="right" style="color:#336699;font-family:Georgia, Times, Serif; font-size:28px;padding-right:10px;margin-right:10px;"><a href="http://library.columbia.edu/indiv/rbml/units/lehman.html" class="noUnderline" style="color:#336699;font-family:Georgia, Times, Serif; font-size:28px;">The Lehman Collections</a></td>
-    <td bgcolor="#cccccc" width="1"><img src="/lehman/images/spacer1px.gif" width="1" height="1" alt="" border="0"></td>
+    <td bgcolor="#cccccc" width="1"><img src="/images/spacer1px.gif" width="1" height="1" alt="" border="0"></td>
   </tr>
 </table>
 

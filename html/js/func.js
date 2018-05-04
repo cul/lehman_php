@@ -121,7 +121,7 @@ function breakFrame(id, caller) {
 }
 
 function openCitation(docID){
-	defWindow=window.open('/lehman/citation.php?document_id='+docID, 'defWin', 'width=800,height=500,scrollbars=yes,resize=yes,menubar=yes');
+	defWindow=window.open('/citation?document_id='+docID, 'defWin', 'width=800,height=500,scrollbars=yes,resize=yes,menubar=yes');
 } // end FUNCTION openCitation
 /*function openCitation(func) {
 	if (func == "open") {

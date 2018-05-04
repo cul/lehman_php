@@ -23,7 +23,7 @@
 ?>
 
 <div style="float:left;width:190px;padding-bottom:5px;">
-<img src="/lehman/images/image3.jpg" alt="Sample telegram from the Lehman Special Correspondence Files Online" width="185" />
+<img src="/images/image3.jpg" alt="Sample telegram from the Lehman Special Correspondence Files Online" width="185" />
 </div>
 <div style="float:right;width:520px;">
 <?php include_once("includes/draft.php"); ?>

@@ -26,7 +26,7 @@
 
   <?php if (isset($addlHeader)) echo $addlHeader; ?>
 
-  <link type="text/css" href="/lehman/css/document.css" rel="stylesheet"></link>
+  <link type="text/css" href="/css/document.css" rel="stylesheet"></link>
 
 </head>
 
