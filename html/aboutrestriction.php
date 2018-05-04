@@ -9,14 +9,14 @@
 	$env = "UNKNOWN";
 
         if (stristr($_SERVER['SERVER_NAME'], '-test')) {
-		$appUrl = "http://katana.cul.columbia.edu:8080/solr/lehman-test"
+		$appUrl = "http://ldpd-solr-test1.cul.columbia.edu:8983/solr/lehman"
 ;
 	}
         else if (stristr($_SERVER['SERVER_NAME'], 'lehman.cul')) {
-		$appUrl = "http://macana.cul.columbia.edu:8080/solr/lehman";
+		$appUrl = "http://ldpd-solr-prod1.cul.columbia.edu:8983/solr/lehman";
 	}
 	else {
-		$appUrl = "http://katana.cul.columbia.edu:8080/solr/lehman-dev";
+		$appUrl = "http://ldpd-solr-dev1.cul.columbia.edu:8983/solr/lehman";
 	}
 
 
