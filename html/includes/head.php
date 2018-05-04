@@ -1,6 +1,6 @@
   <?php
     $page = $_SERVER['PHP_SELF'];
-    $page = str_replace('/lehman/', '', $page);
+    $page = preg_replace('/^\/(lehman\/)?/', '', $page);
     $page = str_replace('.php', '', $page);
 
     $appUrl = "UNKNOWN";
