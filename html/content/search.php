@@ -644,9 +644,9 @@
 				} // end ELSE
 			} // end FOREACH facet_field key 
 
-			foreach(array_keys($facet_dates) as $k) {
+			foreach(array_keys($facet_ranges) as $k) {
 			       if ($k == "unitdate_iso") {
-                                        $dateRanges = $facet_dates[$k];
+                                        $dateRanges = $facet_ranges[$k]['counts'];
                                 }
 
 			}
