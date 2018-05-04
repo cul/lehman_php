@@ -76,7 +76,7 @@
 
                 <p>Words in Documents (<a href="/text/">about this option</a>): &#160;&#160;
 		<input type="text" size="30" name="freetext" value="<?php 
-				$queryFields = array("file_unittitle", "file_unittitle_t", "file_unitdate_display", "file_unitdate_display_t", "freetext", "year", "month", "day", "ocr", "document_id", "genreform1_t", "file_unitdate", "sort", "asc", "desc", "subject_name_t", "unitdate_iso", "_t", "fromYear", "fromMonth", "fromDay", "toYear", "toMonth", "toDay", "subject_terms_t");
+				$queryFields = array("file_unittitle", "file_unittitle_t", "file_unitdate_display", "file_unitdate_display_t", "freetext", "year", "month", "day", "ocr", "document_id", "genreform1_t", "file_unitdate", "sort", "asc", "desc", "unitdate_iso", "_t", "fromYear", "fromMonth", "fromDay", "toYear", "toMonth", "toDay");
 
 				if(isset($_GET['freetext'])) {
 					$freetext = strip_tags($_GET['freetext']);

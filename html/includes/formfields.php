@@ -6,8 +6,7 @@
                 <input type="hidden" name="facet" value="true" />
                 <input type="hidden" name="facet.field1" value="genreform1" />
 		<input type="hidden" name="facet.field2" value="folder_num" />
-		<input type="hidden" name="facet.field3" value="subject_name" />
-		<input type="hidden" name="facet.field4" value="file_unittitle" />
+		<input type="hidden" name="facet.field3" value="file_unittitle" />
                 <input type="hidden" name="facet.mincount" value="1" />
 		<input type="hidden" name="f.file_unittitle.facet.limit" value="-1" />
                 <input type="hidden" name="h1" value="on" />

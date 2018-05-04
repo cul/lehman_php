@@ -26,7 +26,7 @@
 
 <?php
   // IF A QUERY EXISTS, PARSE IT
-  $queryFields = array("file_unittitle", "file_unittitle_t", "file_unitdate_display", "file_unitdate_display_t", "freetext", "year", "month", "day", "ocr", "document_id", "genreform1_t", "file_unitdate", "sort", "asc", "desc", "subject_name_t", "unitdate_iso", "_t", "fromYear", "fromMonth", "fromDay", "toYear", "toMonth", "toDay", "subject_terms_t");
+  $queryFields = array("file_unittitle", "file_unittitle_t", "file_unitdate_display", "file_unitdate_display_t", "freetext", "year", "month", "day", "ocr", "document_id", "genreform1_t", "file_unitdate", "sort", "asc", "desc", "unitdate_iso", "_t", "fromYear", "fromMonth", "fromDay", "toYear", "toMonth", "toDay");
   $query = "";
   $date = "";
   $template = "list";
@@ -315,15 +315,6 @@
 
 
 		// check on freetext -- if it starts with an asterisk, get rid of the first asterisk 
-
-		if (isset($_GET['subject_terms_t']) && $_GET['subject_terms_t'] != NULL && $_GET['subject_terms_t'] !== "") {
-			if ($and)
-				$query .= $urland;
-			else
-				$and = true;
-
-			$query .= "subject_terms_t:{$_GET['subject_terms_t']}";
-		}
 
 		if (isset($_GET['ocr']) && $_GET['ocr'] != NULL && $_GET['ocr'] != "") {
 			$ocr = $_GET['ocr'];
@@ -632,7 +623,6 @@
 		
 
 		$folders = array();
-		$subjects = array();
 		$dateRanges = array();
 		$correspondents = array();
 		$genreform = array();
@@ -644,9 +634,6 @@
 				if ($k == "folder_num") {
 					$folders = $facet_fields[$k];
 				} // end IF folder_num
-				else if ($k == "subject_name") {
-					$subjects = $facet_fields[$k];
-				}
 				else if ($k == "file_unittitle") {
 					$correspondents = $facet_fields[$k];
 				}
@@ -853,7 +840,7 @@
 				if ($noZeroes2 <= 0)
 					print "</p></td></tr></table></div>\n"; //</div>\n";
 			} // end IF noZeroes1
-		} // subjects facet 1
+		}
 
 
 
