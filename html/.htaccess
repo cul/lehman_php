@@ -1,0 +1,44 @@
+# php_flag display_startup_errors on
+# php_flag display_errors on
+# php_flag html_errors on
+
+Options SymLinksIfOwnerMatch
+
+# Turn on the rewrite processing, in case this hasn't been done
+# in the global apache config
+RewriteEngine On
+
+# If the URL corresponds to an actual filename or directory,
+# don't rewrite, just return the resource directly.
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# allow 'bookmarkable' URLs to just one document
+RewriteRule (ldpd_leh_.*) results.php?document_id=$1 [L] 
+
+# JD added 2008-03-09
+# goal: to rewrite any php files as a 'directory' instead of calling *.php
+
+# 1. search rewrites
+
+# search with a trailing slash NOT followed by a question mark
+RewriteRule ^search/(.+) search.php?$1 [L]
+
+# search with a trailing slash and followed by a question mark 
+#RewriteRule ^search/$ search.php?$1 [L]
+# JD # RewriteRule ^search/$ search.php$1 [L]
+RewriteRule ^search/$ search.php [L]
+
+# search without a trailing slash (assuming question mark)
+# JD # RewriteRule ^search?$ search.php$1 [L]
+RewriteRule ^search$ search.php [L]
+
+# 2. everything else
+#RewriteRule ^citation/([^/]+)$ citation.php?$1
+RewriteRule ^about/ about.php
+RewriteRule ^thankyou submitted.feedback.php
+RewriteRule ^feedback feedback.php
+RewriteRule ^restricted/([^/]+)$ restricted.php$1
+RewriteRule ^rights rights.php
+RewriteRule ^text text.php
+

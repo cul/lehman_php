@@ -1,0 +1,109 @@
+BLOCKQUOTE {MARGIN-TOP:0px; FONT-SIZE:12px; MARGIN-BOTTOM:0px; FONT-FAMILY:Verdana, Arial, Geneva, sans-serif}
+BODY {FONT-SIZE:12px; FONT-FAMILY:Verdana, Arial, Geneva, sans-serif}
+DT {MARGIN-TOP:12px; FONT-FAMILY:Verdana, Arial, Geneva, sans-serif}
+DD {FONT-SIZE:12px; FONT-FAMILY:Verdana, Arial, Geneva, sans-serif}
+EM {FONT-WEIGHT:normal; FONT-SIZE:12px; COLOR:#000000; FONT-STYLE:italic; FONT-FAMILY:Verdana, Arial, Geneva, sans-serif}
+H1 {MARGIN-TOP:0px; FONT-WEIGHT:bold; FONT-SIZE:18px; COLOR:#2c5277; FONT-FAMILY:Verdana, Arial, Geneva, sans-serif}
+H2 {MARGIN-TOP:0px; FONT-WEIGHT:bold; FONT-SIZE:16px; COLOR:#2c5277; FONT-FAMILY:Verdana, Arial, Geneva, sans-serif}
+H3 {MARGIN-TOP:0px; FONT-WEIGHT:bold; FONT-SIZE:14px; COLOR:#2c5277; FONT-FAMILY:Verdana, Arial, Geneva, sans-serif}
+H4 {MARGIN-TOP:0px; FONT-WEIGHT:bold; FONT-SIZE:12px; COLOR:#2c5277; FONT-FAMILY:Verdana, Arial, Geneva, sans-serif}
+H5 {MARGIN-TOP:0px; FONT-WEIGHT:bold; FONT-SIZE:12px; COLOR:#2c5277; FONT-FAMILY:Verdana, Arial, Geneva, sans-serif}
+H6 {MARGIN-TOP:0px; FONT-SIZE:10pt; COLOR:#000000; FONT-FAMILY:Verdana, Arial, Geneva, sans-serif}
+HR {MARGIN-TOP:0px; MARGIN-BOTTOM:0px}
+OL {MARGIN-TOP:8px}
+UL {MARGIN-TOP:8px}
+TABLE {MARGIN-TOP:0px; PADDING-TOP:0px; FONT-FAMILY:Verdana, Arial, Geneva, sans-serif}
+TH {FONT-FAMILY:Arial, Helvetica, sans-serif}
+TD {FONT-SIZE:12px; FONT-FAMILY:Verdana, Arial, Geneva, sans-serif}
+.banner {FONT-WEIGHT:bold; FONT-SIZE:20px; FONT-STYLE:normal; FONT-FAMILY:Verdana, Arial, Geneva, sans-serif}
+.banner32px {FONT-WEIGHT:bold; FONT-SIZE:32px; FONT-STYLE:normal; FONT-FAMILY:Verdana, Arial, Geneva, sans-serif}
+.banner28px {FONT-WEIGHT:bold; FONT-SIZE:28px; FONT-STYLE:normal; FONT-FAMILY:Verdana, Arial, Geneva, sans-serif}
+.banner24px {FONT-WEIGHT:bold; FONT-SIZE:24px; FONT-STYLE:normal; FONT-FAMILY:Verdana, Arial, Geneva, sans-serif}
+.banner20px {FONT-WEIGHT:bold; FONT-SIZE:20px; FONT-STYLE:normal; FONT-FAMILY:Verdana, Arial, Geneva, sans-serif}
+.banner16px {FONT-WEIGHT:bold; FONT-SIZE:16px; FONT-STYLE:normal; FONT-FAMILY:Verdana, Arial, Geneva, sans-serif}
+.head0 {MARGIN-TOP:0px; FONT-WEIGHT:bold; FONT-SIZE:20px; COLOR:#2c5277; FONT-FAMILY:Verdana, Arial, Geneva, sans-serif}
+.head1 {MARGIN-TOP:0px; FONT-WEIGHT:bold; FONT-SIZE:18px; COLOR:#2c5277; FONT-FAMILY:Verdana, Arial, Geneva, sans-serif}
+.head2 {MARGIN-TOP:0px; FONT-WEIGHT:bold; FONT-SIZE:16px; COLOR:#2c5277; FONT-FAMILY:Verdana, Arial, Geneva, sans-serif}
+.head3 {MARGIN-TOP:0px; FONT-WEIGHT:bold; FONT-SIZE:14px; COLOR:#2c5277; FONT-FAMILY:Verdana, Arial, Geneva, sans-serif}
+.head4 {MARGIN-TOP:0px; FONT-WEIGHT:bold; FONT-SIZE:12px; COLOR:#2c5277; FONT-FAMILY:Verdana, Arial, Geneva, sans-serif}
+.head5 {MARGIN-TOP:0px; FONT-WEIGHT:bold; FONT-SIZE:12px; COLOR:#2c5277; FONT-FAMILY:Verdana, Arial, Geneva, sans-serif}
+.head6 {MARGIN-TOP:0px; FONT-SIZE:10pt; COLOR:#000000; FONT-FAMILY:Verdana, Arial, Geneva, sans-serif}
+.headb1 {MARGIN-TOP:0px; FONT-WEIGHT:bold; FONT-SIZE:18px; COLOR:#000000; FONT-FAMILY:Verdana, Arial, Geneva, sans-serif}
+.headb2 {MARGIN-TOP:0px; FONT-WEIGHT:bold; FONT-SIZE:16px; COLOR:#000000; FONT-FAMILY:Verdana, Arial, Geneva, sans-serif}
+.headb3 {MARGIN-TOP:0px; FONT-WEIGHT:bold; FONT-SIZE:14px; COLOR:#000000; FONT-FAMILY:Verdana, Arial, Geneva, sans-serif}
+.headb4 {MARGIN-TOP:0px; FONT-WEIGHT:bold; FONT-SIZE:12px; COLOR:#000000; FONT-FAMILY:Verdana, Arial, Geneva, sans-serif}
+.headb5 {MARGIN-TOP:0px; FONT-WEIGHT:bold; FONT-SIZE:12px; COLOR:#000000; FONT-FAMILY:Verdana, Arial, Geneva, sans-serif}
+.headb6 {MARGIN-TOP:0px; FONT-SIZE:10pt; COLOR:#000000; FONT-FAMILY:Verdana, Arial, Geneva, sans-serif}
+.headg1 {MARGIN-TOP:0px; FONT-WEIGHT:bold; FONT-SIZE:18px; COLOR:#999999; FONT-FAMILY:Verdana, Arial, Geneva, sans-serif}
+.headg2 {MARGIN-TOP:0px; FONT-WEIGHT:bold; FONT-SIZE:16px; COLOR:#999999; FONT-FAMILY:Verdana, Arial, Geneva, sans-serif}
+.headg3 {MARGIN-TOP:0px; FONT-WEIGHT:bold; FONT-SIZE:14px; COLOR:#999999; FONT-FAMILY:Verdana, Arial, Geneva, sans-serif}
+.headg4 {MARGIN-TOP:0px; FONT-WEIGHT:bold; FONT-SIZE:12px; COLOR:#999999; FONT-FAMILY:Verdana, Arial, Geneva, sans-serif}
+.headg5 {MARGIN-TOP:0px; FONT-WEIGHT:bold; FONT-SIZE:12px; COLOR:#999999; FONT-FAMILY:Verdana, Arial, Geneva, sans-serif}
+.headg6 {MARGIN-TOP:0px; FONT-SIZE:10pt; COLOR:#999999; FONT-FAMILY:Verdana, Arial, Geneva, sans-serif}
+.serifHead1 {MARGIN-TOP:0px; FONT-WEIGHT:bold; FONT-SIZE:20px; COLOR:#2c5277; FONT-FAMILY:Garamond, Georgia, "Bookman Old Style"}
+.serifHead2 {MARGIN-TOP:0px; FONT-WEIGHT:bold; FONT-SIZE:18px; COLOR:#2c5277; FONT-FAMILY:Garamond, Georgia, "Bookman Old Style"}
+.serifHead3 {MARGIN-TOP:0px; FONT-WEIGHT:bold; FONT-SIZE:16px; COLOR:#2c5277; FONT-FAMILY:Garamond, Georgia, "Bookman Old Style"}
+.serifHead4 {MARGIN-TOP:0px; FONT-WEIGHT:bold; FONT-SIZE:14px; COLOR:#2c5277; FONT-FAMILY:Garamond, Georgia, "Bookman Old Style"}
+.serifHead5 {MARGIN-TOP:0px; FONT-WEIGHT:bold; FONT-SIZE:12px; COLOR:#2c5277; FONT-FAMILY:Garamond, Georgia, "Bookman Old Style"}
+.serifHead6 {MARGIN-TOP:0px; FONT-WEIGHT:bold; FONT-SIZE:12px; COLOR:#2c5277; FONT-FAMILY:Garamond, Georgia, "Bookman Old Style"}
+.line2px {FONT-SIZE:xx-small; LINE-HEIGHT:2px; HEIGHT:2px}
+.line1px {LINE-HEIGHT:1px; HEIGHT:1px}
+
+.notjustified {TEXT-ALIGN:left}
+.justified {TEXT-ALIGN:justify}
+.justified12px {FONT-SIZE:11px; TEXT-ALIGN:justify}
+.justified13px {FONT-SIZE:12px; TEXT-ALIGN:justify}
+.justified14px {FONT-SIZE:13px; TEXT-ALIGN:justify}
+.norm           {font-size:12px;}                                                                                                             
+.norm10px       {font-size:10px; font-family:Verdana, Arial, Helvetica, sans-serif}                                                          
+.norm11px       {font-size:11px; font-family:Verdana, Arial, Helvetica, sans-serif}                                                          
+.norm12px       {font-size:12px; font-family:Verdana, Arial, Helvetica, sans-serif; line-height:16px}                                       
+.norm13px       {font-size:13px; font-family:Verdana, Arial, Helvetica, sans-serif}                                                          
+.norm14px       {font-size:14px; font-family:Verdana, Arial, Helvetica, sans-serif}
+.menu {FONT-SIZE:10px; FONT-FAMILY:Verdana, Arial, Geneva, sans-serif; TEXT-DECORATION:none}
+.menuon {FONT-WEIGHT:bold; FONT-SIZE:10px; FONT-FAMILY:Verdana, Arial, Geneva, sans-serif}
+.menu10 {FONT-SIZE:10px; FONT-FAMILY:Verdana, Arial, Geneva, sans-serif; TEXT-DECORATION:none}
+.menu11 {FONT-SIZE:11px; FONT-FAMILY:Verdana, Arial, Geneva, sans-serif; TEXT-DECORATION:none}
+.menu12 {FONT-SIZE:12px; FONT-FAMILY:Verdana, Arial, Geneva, sans-serif; TEXT-DECORATION:none}
+.hangind25px {PADDING-LEFT:25px; TEXT-INDENT:-25px}
+.hangind20px {PADDING-LEFT:20px; TEXT-INDENT:-20px}
+.teletype10 {FONT-SIZE:10px; FONT-FAMILY:"Courier New", Courier, mono}
+.teletype11 {FONT-SIZE:11px; FONT-FAMILY:"Courier New", Courier, mono}
+.teletype12 {FONT-SIZE:12px; FONT-FAMILY:"Courier New", Courier, mono}
+.alphabet {FONT-WEIGHT:bold; FONT-SIZE:12px; COLOR:#003366; FONT-FAMILY:Verdana, Arial, Geneva, sans-serif}
+.alphaSelected {FONT-WEIGHT:bold; FONT-SIZE:14pt; CURSOR:crosshair; COLOR:#9c8054; FONT-FAMILY:Verdana, Arial, Geneva, sans-serif}
+.blurb {FONT-SIZE:12px; FONT-FAMILY:Verdana, Arial, Geneva, sans-serif; TEXT-DECORATION:none}
+.blurb12 {FONT-SIZE:12px; FONT-FAMILY:Verdana, Arial, Geneva, sans-serif}
+.button11 {FONT-SIZE:11px; FONT-FAMILY:Verdana, Arial, Geneva, sans-serif}
+.caption9 {FONT-SIZE:9px; LINE-HEIGHT:11px; FONT-FAMILY:Verdana, Arial, Geneva, sans-serif}
+.caption10 {FONT-SIZE:10px; COLOR:#003333; LINE-HEIGHT:11px; FONT-FAMILY:Verdana, Arial, Geneva, sans-serif}
+.caption11 {FONT-SIZE:11px; LINE-HEIGHT:13px; FONT-FAMILY:Verdana, Arial, Geneva, sans-serif}
+.caption12 {FONT-SIZE:12px; LINE-HEIGHT:14px; FONT-FAMILY:Verdana, Arial, Geneva, sans-serif}
+.caption9px {FONT-SIZE:9px; LINE-HEIGHT:11px; FONT-FAMILY:Verdana, Arial, Geneva, sans-serif}
+.caption10px {FONT-SIZE:10px; COLOR:#003333; LINE-HEIGHT:11px; FONT-FAMILY:Verdana, Arial, Geneva, sans-serif}
+.caption11px {FONT-SIZE:11px; LINE-HEIGHT:13px; FONT-FAMILY:Verdana, Arial, Geneva, sans-serif}
+.caption12px {FONT-SIZE:12px; LINE-HEIGHT:14px; FONT-FAMILY:Verdana, Arial, Geneva, sans-serif}
+.caption9italic {FONT-SIZE:9px; LINE-HEIGHT:11px; FONT-FAMILY:Verdana, Arial, Geneva, sans-serif; font-style:italic;}
+.caption10italic {FONT-SIZE:10px; COLOR:#003333; LINE-HEIGHT:11px; FONT-FAMILY:Verdana, Arial, Geneva, sans-serif; font-style:italic;}
+.caption11italic {FONT-SIZE:11px; LINE-HEIGHT:13px; FONT-FAMILY:Verdana, Arial, Geneva, sans-serif; font-style:italic;}
+.caption12italic {FONT-SIZE:12px; LINE-HEIGHT:14px; FONT-FAMILY:Verdana, Arial, Geneva, sans-serif; font-style:italic;}
+.caption9pxitalic {FONT-SIZE:9px; LINE-HEIGHT:11px; FONT-FAMILY:Verdana, Arial, Geneva, sans-serif; font-style:italic;}
+.caption10pxitalic {FONT-SIZE:10px; COLOR:#003333; LINE-HEIGHT:11px; FONT-FAMILY:Verdana, Arial, Geneva, sans-serif; font-style:italic;}
+.caption11pxitalic {FONT-SIZE:11px; LINE-HEIGHT:13px; FONT-FAMILY:Verdana, Arial, Geneva, sans-serif; font-style:italic;}
+.caption12pxitalic {FONT-SIZE:12px; LINE-HEIGHT:14px; FONT-FAMILY:Verdana, Arial, Geneva, sans-serif; font-style:italic;}
+.cite11 {FONT-SIZE:11px; FONT-FAMILY:Verdana, Arial, Geneva, sans-serif}
+.cols {FONT-SIZE:11px; FONT-FAMILY:Verdana, Arial, Geneva, sans-serif}
+.directory {FONT-SIZE:10px; FONT-FAMILY:Verdana, Arial, Geneva, sans-serif}
+.footer {FONT-SIZE:10px; FONT-FAMILY:Verdana, Arial, Geneva, Sans-Serif}
+.forminput {FONT-SIZE:10pt; FONT-FAMILY:"Courier New", Courier, mono}
+.greyed_out {FONT-WEIGHT:bold; FONT-SIZE:14px; COLOR:#999999}
+.greyedout {FONT-WEIGHT:bold; FONT-SIZE:14px; COLOR:#999999}
+.headline1 {FONT-WEIGHT:bold; FONT-SIZE:14px; COLOR:#2c5277; FONT-FAMILY:Verdana, Arial, Geneva, sans-serif}
+.intro {FONT-SIZE:12px; FONT-FAMILY:Verdana, Arial, Geneva, sans-serif; TEXT-ALIGN:justify}
+.lmargin5 {MARGIN-LEFT:5px}
+.lmargin10 {MARGIN-LEFT:10px}
+.textblock {FONT-SIZE:14px; FONT-FAMILY:Arial, Helvetica, sans-serif; TEXT-ALIGN:justify}
+.menu {FONT-SIZE:10px; FONT-FAMILY:Verdana, Arial, Geneva, sans-serif; TEXT-DECORATION:none}
+.menuon {FONT-WEIGHT:bold; FONT-SIZE:10px; FONT-FAMILY:Verdana, Arial, Geneva, sans-serif}
+.norm {FONT-SIZE:12px; FONT-FAMILY:Verdana, Arial, Geneva, sans-serif}
+.title {FONT-WEIGHT:bold; FONT-SIZE:0.85em; LINE-HEIGHT:175%; FONT-STYLE:normal; FONT-FAMILY:Verdana, Arial, Geneva, sans-serif; TEXT-DECORATION:none}

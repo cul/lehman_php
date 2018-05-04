@@ -1,0 +1,185 @@
+/* lehman.css
+   Public website for Lehman Special Correspondence Files digital collection
+   Pallet: Light Blue: #F3F8FD
+           Medium Blue: #2C5277
+           Dark Blue: #2D2A62
+           Light Grey: #EEEEEE
+           Dark Grey: #758798
+*/
+
+/* ***************************** BASIC SETUP ***************************** */
+FORM P {
+	padding:3px; margin:3px;
+}
+.noUnderline {
+	text-decoration:none;
+	font-family:inherit;
+}
+.noUnderline:hover {
+	text-decoration:none;
+	font-family:inherit;
+	color:#7bb6d4;
+}
+#a {
+	padding:5px;width:130px;
+	left:70;
+	top:50px;
+	border:1px solid #dddddd;
+	position:absolute;
+	background-color:#f3f8fd;
+}
+#b {
+	height:50px;
+	width:50px;
+	left:70px;
+	top:50px;
+	border:1px solid pink;
+	position:absolute;
+	background-color:#FFEFFE;
+}
+#breadcrumb {
+	margin-left:15px;
+}
+#menu {
+	background:transparent;
+	padding:0px;
+	margin:0px;
+	display:block;
+}
+#min {
+	display:block;
+}
+#max {
+	display:none;
+}
+FORM#searchForm {
+	padding:0px;
+	margin:0px;
+}
+H3.searchTitle {
+	margin:0;padding:0;
+	color:#336699;
+	font-size:14px;
+}
+TABLE.searchTable {
+	border-collapse:collapse;
+}
+.searchTable label {
+	font-weight:normal;
+}
+.btn {
+	background:#336699;
+	border:1px solid #f3f8fd;
+	color:#f3f8fd;
+	font-family:Verdana, Arial, "Sans-Serif";
+	font-size:12px;
+	border-top:1px solid #ccc;
+	border-left:1px solid #ccc;
+}
+TD.optionTitle {
+	font-weight:bold;
+	color:#336699;
+	vertical-align:top;
+	border-top:1px solid #999;
+	padding:10px;
+}
+TD.option {
+	background:#f3f8fd;
+	border-top:1px solid #999;
+	padding:10px;
+}  
+TD.toolsMenu {
+	background-color:#eee;
+	color:#2d2a62;
+	padding:5px;
+	font-weight:bold;
+	border:1px solid #ccc;
+}
+#banner {
+	background-color:#2C5277;
+	color:#ffffff;
+	font-size:16px;
+}
+#banner_left {
+	padding-top:10px;
+	padding-right:15px;
+	padding-bottom:0px;
+	padding-left:15px;
+	text-align:center;
+	font-family:TrajanProRegular, trajan, serif;
+	color:#ffffff;
+	font-size:30px;
+}
+#banner_left a {
+	font-family:TrajanProRegular, trajan, serif;
+}
+#banner_right {
+	padding-bottom:8px;
+	padding-right:15px;
+	text-align:right;
+	color:#c9caca;
+	font-size:14px;
+}
+#banner a {
+	color:#ffffff;
+	text-decoration:none;
+}
+#menu P {
+	border-bottom:1px solid #ccc;
+}
+.sidemenu P.on {
+	border-top:1px solid #ddd;
+	padding:5px;
+	margin:0px;
+}
+.sidemenu P.off {
+	border-top:1px solid #ddd;
+	font-weight:bold;
+	color:#2d2a62;
+	padding:5px;  
+	margin:0px;
+}
+#footer {
+	padding:2px 6px 2px 6px;
+	background-color:#2d2a62;
+	color:#ffffff;
+}
+#footer a {
+	color:#ffffff;
+	text-decoration:none;
+}
+#footer_left {
+	float:left;
+	text-align:left;
+}
+#footer_right {
+	float:right;
+	text-align:right;
+	color:#9fa0a0;
+}
+TABLE.resultsList {
+	border:1px solid #ddd;
+	border-collapse:collapse;
+	/*width:620px;*/
+	width:725px;
+	font-size:12px;
+}
+TABLE.limitTable {
+	border:1px solid #ccc;
+	width:140px;
+}
+.resultsList TH {
+	text-align:left;
+	font-size:12px;
+	font-weight:bold;
+	background:#eee;
+	border-bottom:1px solid #ddd;
+	padding:3px;
+}
+.resultsList TD {
+	border-bottom:1px solid #ddd;
+	padding:3px;
+}
+img {
+	border:0px;
+}
