@@ -34,7 +34,8 @@ RewriteRule ^search/$ search.php [L]
 RewriteRule ^search$ search.php [L]
 
 # 2. everything else
-#RewriteRule ^citation/([^/]+)$ citation.php?$1
+RewriteRule ^citation/([^/]+)$ citation.php?$1
+RewriteRule ^citation?([^/]+)$ citation.php?$1
 RewriteRule ^about/ about.php
 RewriteRule ^thankyou submitted.feedback.php
 RewriteRule ^feedback feedback.php
