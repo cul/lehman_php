@@ -14,28 +14,21 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 
 # allow 'bookmarkable' URLs to just one document
-RewriteRule (ldpd_leh_.*) results.php?document_id=$1 [L] 
+RewriteRule (ldpd_leh_.*) results.php?document_id=$1 [L]
 
 # JD added 2008-03-09
 # goal: to rewrite any php files as a 'directory' instead of calling *.php
 
 # 1. search rewrites
 
-# search with a trailing slash NOT followed by a question mark
-RewriteRule ^search/(.+) search.php?$1 [L]
-
 # search with a trailing slash and followed by a question mark 
-#RewriteRule ^search/$ search.php?$1 [L]
-# JD # RewriteRule ^search/$ search.php$1 [L]
-RewriteRule ^search/$ search.php [L]
-
-# search without a trailing slash (assuming question mark)
-# JD # RewriteRule ^search?$ search.php$1 [L]
-RewriteRule ^search$ search.php [L]
+RewriteRule ^search/$ /search.php
+RewriteRule ^search/(.+)$ /search.php?$1
+RewriteRule ^search$ /search.php
 
 # 2. everything else
-RewriteRule ^citation/([^/]+)$ citation.php?$1
-RewriteRule ^citation?([^/]+)$ citation.php?$1
+RewriteRule ^citation/$ /citation.php
+RewriteRule ^citation$ /citation.php
 RewriteRule ^about/ about.php
 RewriteRule ^thankyou submitted.feedback.php
 RewriteRule ^feedback feedback.php
