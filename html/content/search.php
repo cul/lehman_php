@@ -685,7 +685,7 @@
                 	print $pagination;
 			printList($docs, $dateRanges, $correspondents, $genreform, $sort, $q, $numFound, $env);
 
-		else {
+		} else {
 		writeSearchMenu('Search again',$appUrl);
 		}
 
