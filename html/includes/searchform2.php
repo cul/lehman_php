@@ -106,8 +106,6 @@
 <?php
                 for ($i=1; $i < 32; $i++) {
                         print '<option value="'. str_pad($i,2,"0", STR_PAD_LEFT) . '"';
-                        //if(isset($_GET['day']) && ($_GET['day'] == $i))
-                                //print ' selected="selected"';
                         print '>' . $i . "</option>\n";
                 }
 ?>
@@ -156,21 +154,6 @@ rt=false&facet.limit=10000&wt=phps";
 <td class="option">
                 <p><label for="rows">Display</label>
                 <select name="rows">
-<!--
-		<option value="">[results]</option>
--->
-
-		<?php
-/*
-			$displays = array("10", "20", "50");
-			foreach($displays as $disp) {
-				print '<option value="' . $disp . '"';
-				if (isset($_GET['rows']) && $_GET['rows'] == $disp)
-					print ' selected="selected"';
-				print ">$disp</option>\n";
-			}
-*/
-		?>
 		<option value="10">10</option>
 		<option value="20" selected="selected">20</option>
 		<option value="50">50</option>
@@ -184,13 +167,7 @@ rt=false&facet.limit=10000&wt=phps";
 			<option value="unitdate_iso asc">Date</option>
 			<option value="genreform1 asc, pages asc">Document type</option>
 		</select>
-<!-- 
-		<span style="margin-left:200px;"><input type="submit" value="Search" />&#160;&#160;<input type="button" value="Clear" onClick="resetMe()"/></span>
--->
 		</p>
-<!--
-                <input type="hidden" name="sort" value="file_unittitle_t asc" />
--->
 <?php
                 include_once('../includes/formfields.php');
 ?>
@@ -202,10 +179,6 @@ rt=false&facet.limit=10000&wt=phps";
 var AC = new dmsAutoComplete('string','acDiv');
 AC.clearField = false;
 AC.chooseFunc = function(id,label) {
-        /*document.getElementById("selFac").innerHTML = "";
-        document.getElementById("selFac1").innerHTML = '<input type="hidden" name="addlFac1" value="' + id + '" />';
-        alert(document.getElementById("selFac1").innerHTML);
-	*/
 	alert(id+'-'+label);
 }  // end chooseFunc
 

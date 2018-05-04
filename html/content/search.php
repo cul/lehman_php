@@ -43,9 +43,6 @@
   }
   $urland = urlencode(" $operator ");
 
-  // DEBUG
-  // print $_SERVER['PHP_SELF'] . "?" . $_SERVER['QUERY_STRING'] . "<br>";
-
   if ($_GET)
   {
     foreach(array_keys($_GET) as $k)
@@ -92,7 +89,6 @@
       else
       {
         $query .= 'file_unittitle_t:"' . $unittitle . '"';
-	//$query .= 'file_unittitle_t:' . $unittitle;
       }
     } // END UNITTITLE
 
@@ -100,8 +96,6 @@
 		// if ONLY year -- wildcard
 		// if ONLY month -- wildcard
 		// if ONLY day -- krap??
-
-		//echo "|" . $_GET['year'] . "|" . $_GET['month'] . "|" . $_GET['day'] . "|<br />";
 
 		if (isset($_GET['year']) && $_GET['year'] != NULL && $_GET['year'] != "") {
 			$year = urlencode(htmlentities($_GET['year'], ENT_QUOTES, 'UTF-8'));
@@ -123,10 +117,8 @@
 		}
 
 		if (isset($_GET['day']) && $_GET['day'] != NULL && $_GET['day'] != "") {
-			//$day = urlencode(htmlentities($_GET['day'], ENT_QUOTES, 'UTF-8'));
 			$day = intval($_GET['day']);
 			if ($date != "") {
-				//$date .= "-";
 				$date .= " ";
 			}
 			$date .= $day;
@@ -151,11 +143,6 @@
 			}
 		}
 
-		// JUST ADDED
-		//else
-		//	$dateRange .= $MAXFROMYEAR;
-
-		//print $dateRange . " - 1<br >";
 
 		if (isset($_GET['fromMonth']) && $_GET['fromMonth'] != NULL && $_GET['fromMonth'] != "") {
 			$isfromMonth = true;
@@ -171,7 +158,6 @@
 				$dateRange .= "-01T23:59:59Z";
 		}
 
-		//print $dateRange . " - 2<br >";
 
 		if (isset($_GET['fromDay']) && ($_GET['fromDay'] != NULL || $_GET['fromDay'] != "") ) {
 			if ($dateRange != "") 
@@ -186,14 +172,8 @@
  					$dateRange .= "T23:59:59Z";
 			}
 		}
-		/*else if ($dateRange != "") {
-			// ISSUE -- if disabled, fromDay may not appear at all
-			$dateRange .= "-01T23:59:59Z";
-		}*/
 
 
-
-		//print $dateRange . " - 3<br >";
 
 		if ($dateRange == "")
 			$dateRange .= "*";
@@ -210,10 +190,6 @@
 			}
 		}
 
-		//else
-			//$toRange .= $MAXTOYEAR;
-
-		//print $toRange . " - 4<br >";
 
                 if (isset($_GET['toMonth']) && $_GET['toMonth'] != NULL && $_GET['toMonth'] != "") {
 			$istoMonth = true;
@@ -228,15 +204,12 @@
 			if ( !isset($_GET['toDay']) || isset($_GET['toDay']) && ($_GET['toDay'] == NULL || $_GET['toDay'] == "") )
                                 $toRange .= "-31T23:59:59Z";
                 }
-		//print $toRange . " - 5<br >";
 
                 if (isset($_GET['toDay']) && $_GET['toDay'] != NULL && $_GET['toDay'] != "") {
-			//print "{$_GET['toDay']}<br />";
                         if ($toRange != "" && $toRange != "* TO ")
                                 $toRange .= "-";
 
                         if ( (isset($_GET['toMonth']) && ($_GET['toMonth'] == NULL || $_GET['toMonth'] == "")) )
-                                //$toRange .= "*-";
 				$toRange .= "12-31T23:59:59Z";
 			else {
                         	$toRange .= $_GET['toDay'];
@@ -244,10 +217,6 @@
  					$toRange .= "T23:59:59Z";
 			}
                 }
-		/*else if ($toRange != "") {
-			$toRange .= "-12-31T23:59:59Z";
-		}*/
-		//print $toRange . " - 6<br >";
 
 		if ($toRange == "")
 			$toRange .= "*";
@@ -281,7 +250,6 @@
 				$toMonth = intval($_GET['toMonth']);
 
 			if ($toMonth < $fromMonth && ($fromMonth > 0 && $toMonth > 0)) {
-				//print "$toMonth < $fromMonth<br />"; 
 				// wrapper
 				for ($i = $fromMonth; $i <= ($toMonth + 12); $i++) {
 					if ($or) 
@@ -291,7 +259,6 @@
 
 					$myMonth = (int)($i % 12);
 					$monthQuery .= "file_unitdate_display_t:" . getMonth($myMonth,$monthArr);
-					//$monthQuery .= "%22";
 				} // end FOR 
 			} // end IF to < from
 
@@ -304,7 +271,6 @@
 					else
 						$or = true;
 					$monthQuery .=  "file_unitdate_display_t:" . getMonth($i,$monthArr);
-					//$monthQuery .= "\"";
 				} // end FOR  
 			} // end ELSE from > to
 
@@ -360,11 +326,9 @@
 		}
 
 		if (isset($_GET['ocr']) && $_GET['ocr'] != NULL && $_GET['ocr'] != "") {
-			//$ocr = urlencode(htmlentities($_GET['ocr'], ENT_QUOTES, 'UTF-8'));
 			$ocr = $_GET['ocr'];
 			//print "$ocr<br />";
 			if (isset($_GET['freetext']) && $_GET['freetext'] != NULL && $_GET['freetext'] != "") {
-				//$ft = htmlentities($_GET['freetext'], ENT_QUOTES, 'UTF-8');
 
 				$ft = $_GET['freetext'];
 				$ft = str_replace("+or+", "+OR+", $ft);
@@ -382,8 +346,6 @@
 					else
 						$and = true;
 
-					// marquis, 2/2012 - fix space-embedded free-text queries
-					//$query .= "ocr:$ft";
 					$query .= "ocr:" . urlencode($ft);
 				} // ocr on 
 				
@@ -410,7 +372,6 @@
 
 		else { // OCR not set
 			if (isset($_GET['freetext']) && $_GET['freetext'] != NULL && $_GET['freetext'] != "") {
-                                //$ft = urlencode(htmlentities($_GET['freetext'], ENT_QUOTES, 'UTF-8'));
                                 $ft = $_GET['freetext'];
 				$ft = str_replace(" or ", " OR ", $ft);
 				$ft = str_replace(" and", " AND ", $ft);
@@ -442,12 +403,10 @@
 			$pattern = "/\d{4}.\d{4}/";
 			if (preg_match($pattern,$id)) {
 				$id = substr($id,-9,9);
-				//print "ID = $id<br />";
 				$id = substr($id,0,4) . "_" . substr($id,-4,4);
 				if (!stristr($id, "ldpd_leh_")) {
 					$id = "ldpd_leh_" . $id;
 				}
-				//print "ID = $id<br />";
 			}
 			// else, just pass it along and let the query come back badly
 
@@ -472,31 +431,19 @@
 				$sort = $sortArr[1];
 		}
 
-		//DEBUG
-		//print "<pre>"; print_r($_GET); print "</pre>"; 
-		//print "query: q=$query<br />";
-
                 if ($query == NULL || $query == "") {
                         writeError($appUrl);
                         exit;
                 }
 
 		if (!isset($_GET['q'])) { 	
-			// if a sort is already there, don't add one in
-			//  preg_match(urlencode($sort), $query, $matchesA);
-			//  preg_match($sort, $query, $matchesB);
 			$query = str_replace(';file_unittitle+asc', '', $query);
-			//print_r($matchesA); print_r($matchesB); print_r($matchesC);
-//			if ( count($matchesA) == 0 || count($matchesB) == 0) {
 			if ( stristr($query, $sort) === FALSE &&
                              stristr($query, urlencode($sort)) === FALSE ) {
 				//$query .= ";" . urlencode($sort);
 				$query .= "&sort=" . urlencode($sort);
 			}
 		}
-
-		//DEBUG
-		//print "query: $query<br />";
 
 		foreach(array_keys($_GET) as $key) {
 		     if (!isset($_GET['q'])) {
@@ -540,13 +487,10 @@
                         $facetAddOn .= "&rows=20";
 
 
-//		if ( ! ( stristr($query, "facet=true", true) || 
-//                         stristr($query, "facet=true") ) )
 		if ( stristr($query, 'facet=true') === FALSE )
 			$facetAddOn .= "&facet=true&facet.mincount=1&facet.field=file_unittitle&facet.field=genreform1&f.file_unittitle.facet.limit=-1";
 		
 		$result = searchSolr($query, $appUrl, $facetAddOn);
-// print "<pre>\n"; echo print_r($result); print "</pre>\n";
 		extract($result);
 		extract($responseHeader);
 		extract($params);		
@@ -589,7 +533,6 @@
 		}		
 		
 		// replace file_unittitle_t with $_GET['file_unittitle_t'] to preserve any funk
-		//$qArr = explode(" AND ", $qRevised);
 		$qArr = explode(" $operator ", $qRevised);
 
 		$qRevised = ""; // reuse this var
@@ -651,8 +594,6 @@
 		}
 
 		$qRevised = urldecode(str_replace(":", "", $qRevised));
-		//$qRevised = str_replace("*", "", $qRevised);
-		//$qRevised = str_replace('"', '', $qRevised);
 		$qRevised = str_replace(';', '', $qRevised);
 		$qRevised = str_replace($sort,'',$qRevised);
 		
@@ -666,10 +607,7 @@
 
 
 // final round
-		// NOT NEEDED?  JD REMOVED, 2010-05-18
-		//foreach($queryFields as $field) 
-                 //               $qRevised = str_replace($field, "", $qRevised);
-                
+
 		$qRevArr = explode(" OR ", $qRevised);
 		$qRevised = $qRevArr[0] . " ";
 		$dash = true;
@@ -686,8 +624,6 @@
 			}
 		} // end FOR
 
-		//echo $qRevArr[(count($qRevArr)-1)] . in_array($qRevArr[(count($qRevArr)-1)],$monthArr);
-
 		if (in_array($qRevArr[(count($qRevArr)-1)],$monthArr) && $dash)
 			$qRevised .= "- ";
 
@@ -702,9 +638,6 @@
 		$genreform = array();
 
 		if($facet_counts && $numFound > 0) {
-			//print "<div style='border:1px solid #abc;background:#fff;color:#369;z-index:1;float:right;padding:10px;margin-right:10px'>\n";
-			//if ($template == $search) 
-				//print "<p><strong>Results Overview</strong></p>";
 			extract($facet_counts);
 
 			foreach(array_keys($facet_fields) as $k) {
@@ -721,14 +654,6 @@
 					$genreform = $facet_fields[$k];
 				}
 				else { 
-				/*	print "<p><strong>$k</strong></p>";
-					print "<p>";
-					foreach(array_keys($facet_fields[$k]) as $facet) {
-						//if ($template == "search")
-							print $facet . ": " . $facet_fields[$k][$facet] . "<br />\n";
-					} // end FOREACH facet_fields
-					print "</p>\n";
-				*/
 				} // end ELSE
 			} // end FOREACH facet_field key 
 
@@ -738,7 +663,6 @@
                                 }
 
 			}
-			//print "</div>\n";
 		} // IF facet_counts	
 
 		if (!$start) {
@@ -761,37 +685,7 @@
                 	print $pagination;
 			printList($docs, $dateRanges, $correspondents, $genreform, $sort, $q, $numFound, $env);
 
-// marquis, 2/2012 - ALL THIS IS CRUD
-// during the CUIT LAMP to LITO LAMP migration I noticed that many searches
-// were entirely broken.  In fact, they have been for a long time, and the
-// below is one reason why.
-//			$dlo = "http://www.columbia.edu/cgi-bin/cul/$env/dlo";
-//
-//			if ($template == "search") {
-//				//printSearch($docs, $sort, $dlo, $q, $numFound);
-//				printList($docs, $subjects, $sort, $q, $numFound, $env);
-//// function signiture from below...
-////printList($docs, $dateRanges, $correspondents, $genreform, $sort, $q, $numFound, $env)
-//			}
-//			else {
-//				//print "printing list with $sort and $q<br />";
-//				//printList($docs, $subjects, $sort, $q, $numFound, $env);
-//				printList($docs, $dateRanges, $correspondents, $genreform, $sort, $q, $numFound, $env);
-//			}
-
-		} // end IF numFound > 0
 		else {
-		/*	
-		//print "<p><a href=\"javascript:toggle('searchForm')\" class=\"toggle\"><img id=\"IsearchForm\" border=\"0\" src=\"http://www.columbia.edu/cu/lweb/images/icons/left-off.gif\"><span id=\"spanblurbsearchForm\">Search again</span></a></p>";
-		//print "<p><a href=\"javascript:toggle('searchForm', 'Refine/restart search', 'Hide search form')\" class=\"toggle\">";
-		//print "<img id=\"IsearchForm\" border=\"0\" src=\"http://www.columbia.edu/cu/lweb/images/icons/left-off.gif\"><span id=\"spanblurbsearchForm\">Refine/restart search</span></a></p>";
-		//print '<div class="expand" id="LsearchForm" style="padding:5px;margin:5px;display:none;"><!-- border:1px solid #ddd;background:#eee;>-->';
-		print '<div class="expand" id="LsearchForm" style="padding:5px;margin:5px;border:1px solid #ddd;background:#eee;">'; //display:none;">';
-		print '<h3>Search again</h3>';
-        	include_once("includes/searchform.php");
-		//print '</div>';
-			//print "<script>toggle('searchForm', 'Refine/restart search', 'Hide search form')</script>";
-		*/
 		writeSearchMenu('Search again',$appUrl);
 		}
 
@@ -833,8 +727,6 @@
 	function printList($docs, $dateRanges, $correspondents, $genreform, $sort, $q, $numFound, $env) {
 		$q = urlencode($q);
 		$sort = urlencode($sort);
-		//$url = "http://ldpd.lamp".$env.".columbia.edu/lehman/search.php?wt=phps&q=subject_name_t:";	
-		//$url = "http://ldpd.lamp".$env.".columbia.edu/lehman/search/?wt=phps&";
 		$url = "/search/?wt=phps&";
 		$rows = "";
 		if (!stristr("rows=", $q))
@@ -892,10 +784,6 @@
 		}
 
 
-		//print "\n<pre>$isGenre | $isCorrespondent | $isDate | $urlAllGenre | $urlAllCorrespondent | $urlAllDate</pre>\n";
-		//print "\n<pre>";print_r($queryArray); print "</pre>\n";
-
-
 		// print all of the facets that are greater than 0 for the date range, but if there are ranges
 		// between items that have 0, indicate that as well
 
@@ -912,24 +800,17 @@
 
 		if ($noZeroes1 > 2 || $noZeroes2 > 0) { //0=value? 1=gap 2=end
 			print "<div style='float:right;padding:0px;margin-right:5px;width:135px;font-size:12px;background-color:#fff;'>"; //border:1px solid #ccc;'>\n";
-			//print "<div style='float:right;margin-right:5px;width:125px;font-size:11px;background-color:#eee;border:1px solid #ccc;'>\n";
-			//print "<p style='padding:0;text-align:center;'>";
 
 			print "<table cellpadding=0 cellspacing=0 class='limitTable'>\n<tr>\n<th style='text-align:center;border-bottom:1px solid #ccc;background-color:#eee;font-size:12px;height:22px'><p><strong>Limit results</strong></p></th>\n</tr>\n";
-			//print "<span style='border-bottom:1px solid #ccc;background-color:#eee;'><strong>Limit search</strong></span>\n";
-			//print "<div style='border:1px solid #ccc;padding:5px;margin-right:5px;width:125px;font-size:11px'>\n";
-			//print '<div style="background:#fff;width:auto">';
 			print "<tr>\n<td style='padding:3px;font-size:11px;'>\n";
 
 			if ($noZeroes1>2) {
 				print "<p><strong>Date:</strong> <br />";
                                 $newQ = urldecode($q);
-				//print "<p>$newQ</p>\n";
                                 $newQ = str_replace($urlAllDate,"",$newQ);
                                 $newQ = str_replace("AND  AND","AND",$newQ);
 
 				if ($isDate && ($isCorrespondent || $isGenre)) {
-					//print $newQ . "<br />";
 					print "<a class=\"noUnderline\" href=\"$url" . makeQuery($newQ) . "\">All</a>&#160&#187;<br />";
 				}
 
@@ -938,9 +819,6 @@
 				$holdNonZeroes = array();
 				foreach(array_keys($dateRanges) as $k) { // assumption -- these come back in order?
 					if ($dateRanges[$k] > 0 && $k != "gap" && $k != "end") {
-						//DEBUG
-						//print "<a href=\"$url%22" . urlencode($k) . "%22+AND+$q\">$k</a> ($dateRanges[$k])<br />";
-						//print "unitdate_iso:[" . substr($k,0,4) . "-01-01 TO";
        	                                 	if (count($holdNonZeroes) > 0) {
        	                                         	foreach($holdNonZeroes as $h)
                                                        		print $h . "\n";
@@ -950,14 +828,7 @@
 							$fromYear = (int)substr($k,0,4);
 							$toYear = (((int)substr($k,0,4))+9);
 
-							/*if (isset($_GET['fromYear']) && $_GET['fromYear'] != "" && $_GET['fromYear'] != NULL)
-								$fromYear = $_GET['fromYear'];
-
-                                                       if (isset($_GET['toYear']) && $_GET['toYear'] != "" && $_GET['toYear'] != NULL)
-                                                               $toYear = $_GET['toYear'];
-							*/
 						// if info falls out of range of facet, re-range it	
-						//print $fromYear . "<br>";
 						if (($fromYear <= (int)substr($k,0,4)) || !$isDate) 
 							$fromYear = (int)substr($k,0,4);
 
@@ -965,11 +836,9 @@
 							$toYear = (((int)substr($k,0,4))+9);
 
 						if (!$isDate || ($isDate && $noZeroes1 > 3)) {
-							//print "<a href=\"$url" . makeQuery("unitdate_iso:[" . substr($k,0,4) . "-01-01 TO ". (((int)substr($k,0,4))+9) . "-12-31]" . " AND ". $newQ) . $rows . "\">" . substr($k,0,4) . "-" .  (((int)substr($k,0,4))+9). "</a> (" . $dateRanges[$k] . ")<br />\n";
 							print "<a class=\"noUnderline\" href=\"$url" . makeQuery("unitdate_iso:[" . $fromYear . "-01-01 TO ". $toYear . "-12-31]" . " AND ". $newQ) . $rows . "\">" . $fromYear . "-" .  $toYear . "</a> (" . $dateRanges[$k] . ")<br />\n";
 						} // if isDate 
 						else {
-							//print substr($k,0,4) . "-" .  (((int)substr($k,0,4))+9). " (" . $dateRanges[$k] . ")<br />\n";
 							print $fromYear . '-' . $toYear . ' (' . $dateRanges[$k] . ")<br />\n";
 						}
 						if ($printedOnce == false) {
@@ -990,14 +859,12 @@
 
 
                 if (count($correspondents) > 0 && $noZeroes2 > 0) {
-		/* SUBJECTS: THIS ISN'T EXACTLY STRONG; ELIMINATE FOR NOW!  SWITCHING TO CORRESPONDENTS*/
                         print "<p><strong>Corresp. File:</strong> <br />";
 
                        	if ($isCorrespondent && ($isGenre || $isDate)) {
                               $newQ = urldecode($q);
                               $newQ = str_replace($urlAllCorrespondent,"",$newQ);
                               $newQ = str_replace("AND  AND","AND",$newQ);
-                              //print $newQ . "<br />";
                               print "<a class=\"noUnderline\" href=\"$url" . makeQuery($newQ) . "\">All</a>&#160&#187;<br />";
                         }
 
@@ -1015,10 +882,8 @@
                                	if ($correspondents[$k] > 0 && $k != "gap" && $k != "end") {
 					$sortA = $sort . ";";
 					$qA = str_replace($sortA, "", $q);	
-					//$qA = makeQuery('file_unittitle_t:"' . urlencode($k) . '" AND '. urldecode($qA));
 					$qA = makeQuery('file_unittitle_t:"' . $k . '" AND '. urldecode($qA));
 					$qA = str_replace("%253B", ";", $qA);
-					//print "$qA<br />";
 					if ($i < $VISIBLE) {
 						if (!$isCorrespondent)
                                        			print "<a class=\"noUnderline\" href=\"$url" . $qA . $rows . "\">$k</a> ($correspondents[$k])<br />";
@@ -1047,12 +912,10 @@
                               $newQ = urldecode($q);
                               $newQ = str_replace($urlAllGenre,"",$newQ);
                               $newQ = str_replace("AND  AND","AND",$newQ);
-                              //print $newQ . "<br />";
                               print "<a class=\"noUnderline\" href=\"$url" . makeQuery($newQ) . "\">All</a>&#160&#187;<br />";
                         }
 
 
-                        //$genreform = ksort($genreform); // just in case :)
                         foreach(array_keys($genreform) as $k) {
                                 if ($genreform[$k] > 0) {
                                         $sortA = $sort . ";";
@@ -1089,7 +952,6 @@
 
 			if (isset($_GET['sort']) && ($_GET['sort'] == "" || $_GET['sort'] == NULL)) {
 				$url = str_replace("&sort=","&sortsort", $url);
-				//print $url . "<br>";
 			}
 
 			if (isset($_GET['q']) && $_GET['q']) {
@@ -1107,9 +969,7 @@
 				}
 				else { 
 					print '<a href="';
-                                	//if (str_replace(urlencode($sort), urlencode($lookFor), $url)) {
 					if (str_replace($sort, $lookFor, $url)) {
-                                        	//print str_replace(urlencode($sort),urlencode($lookFor),$url);
 						print str_replace($sort,$lookFor,$url);
                                 	}
 					else if (str_replace(urlencode($sort), urlencode($lookFor), $url)) {
@@ -1134,9 +994,7 @@
 
 				else {
 					print '<a href="';
-					//if (str_replace(urlencode($sort), urlencode($lookFor), $url)) {
 					if (str_replace($sort, $lookFor, $url)) {
-						//print str_replace(urlencode($sort),urlencode($lookFor),$url);
 						print str_replace($sort, $lookFor, $url);
 					}
                                         else if (str_replace(urlencode($sort), urlencode($lookFor), $url)) {
@@ -1150,7 +1008,6 @@
 			} // end ELSE (not ID)	
 		} // end FOR i
 
-		//print "<th>Access</th>\n";
 		print "</tr>";
 
 		$bool = true;
@@ -1170,7 +1027,6 @@
 			extract($doc);
 			// f3f8fd style:cursorpointer
 			print "<tr onMouseOver=\"this.style.background='#f3f8fd'\" onMouseOut=\"this.style.background='#fff'\">"; 
-			//$modifiedID = stristr($document_id, 'ldpd_leh_'); 
  			$modifiedID = substr($document_id,9);
 			// replaced results.php with /lehman/
 			print "<td width=15% valign=top style='font-size:11px;'><a href=\"/lehman/document_id=$document_id?$urlAdd\" class=\"noUnderline\" style='color:#000'>" . $modifiedID . "</a></td>\n";
@@ -1179,7 +1035,6 @@
 				if ($pages > 1) echo 's';
 			print ")</a></td>\n";
 			print "<td width=25% valign=top style='font-size:11px;'><a href=\"/lehman/document_id=$document_id?$urlAdd\" class=\"noUnderline\" style='color:#000'>";
-			//if ($file_unitdate_display != "")	
 			if ( isset($file_unitdate_display) )	
 				echo $file_unitdate_display;
 			else
@@ -1188,34 +1043,11 @@
 			$img1 = "http://www.columbia.edu/cu/lweb/digital/collections/cul/texts/images/bookcitation-sm.gif";
 			$img2 = "https://www1.columbia.edu/sec/cu/libraries/staffweb/img/assets/6635/key_cuid.gif"; //images/restricted.jpg";
 
-			/*print "<td align=\"center\">";
-		
-			$isImageRestricted = $image_access;
-
-			if ( ($isImageRestricted == "campus" && $isIpRestricted <= 0) || $isImageRestricted == "public" )
-				$bool = true;
-			else
-				$bool = !$bool;
-
-			if ($bool) {
-			//replaced results.php?
-				print "<a href=\"/lehman/document_id=$document_id$urlAdd\" class=\"noUnderline\"><img src=\"$img1\" alt=\"View\" />"; //&#160;view";
-			}
-			else {
-				print "<a href=\"/lehman/document_id=$document_id$urlAdd\" class=\"noUnderline\"><img src=\"$img2\" alt=\"Restricted\" />"; //&#160;restricted";
-			}
-			print "</a></td>\n"; */
 			print "</tr>\n";
-			//$bool = !$bool;
 		} // end FOREACH $doc
                         $img1 = "http://www.columbia.edu/cu/lweb/digital/collections/cul/texts/images/bookcitation-sm.gif";
                         $img2 = "https://www1.columbia.edu/sec/cu/libraries/staffweb/img/assets/6635/key_cuid.gif"; //images/restricted.jpg";
 		print "</table>";
-		
-		//print "<p align=\"center\" style=\"font-size:10px;border:transparent;\"><img src=\"$img1\" alt=\"open access\">&#160;=&#160;available document; ";
-		//print "<img src=\"$img2\" alt=\"restricted\">&#160;=&#160;restricted to on-campus use";
-		//print "</p>\n";
-
 		
 	} // end FUNCTION printList
 
@@ -1231,16 +1063,6 @@
                         $q = urlencode($q);
 
                         $urlAdd = "&q=$q;&items=$numFound&itemNo=" . ($start + $i++);
-
-                        /*print "<ul>";
-                        foreach(array_keys($doc) as $key) {
-                                if ($key != "ocr")
-                                        print "<li>$key: $doc[$key]</li>";
-                                else
-                                        print "<li>$key: " . substr($doc[$key], 0, 50) . "</li>";
-                        }
-			print "</ul>";
-			*/
 
 			extract($doc);
 			$r = isRestricted();
@@ -1351,9 +1173,6 @@
 	
         	// pagination <<1, 2, 3, 4, 5, 6, 7, 8, 9, 10>>
 
-	        // get current page
-       		//$curPage = (int)($start/$increment) + 1;
-
        	 	// get incremental
         	$y = (int)(($curPage - 1)/10) * 10;
 
@@ -1417,7 +1236,6 @@ $pagination .= '<a title="Next 10 pages (pp. ' . ($y+11) . '-' .  ($y+$increment
                 	$pagination .= '</span>';
         	}
 
-        //$pagination .= '&#160;' . $next . '</td></tr></table>';
 	$pagination .= '</td></tr></table>';
 
 	return $pagination;	

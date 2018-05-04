@@ -39,10 +39,7 @@
                       {
                         $searchUrl = $serializedResult = $result = $responseHeader = $response = $docs = "";
                         $searchUrl = "http://" . $appUrl . ".cul.columbia.edu:8080/lehman/select?&wt=phps&q=document_id:" . $_GET['document_id'] . "&rows=1";
-/*
-                        $serializedResult = file_get_contents($searchUrl);
-                        $result = unserialize($serializedResult);
-*/
+
 			$qUrl = "wt=phps&q=document_id:" . $_GET['document_id'];
 			$result = searchSolr($qUrl,$appUrl,"");
                         extract($result);
@@ -51,7 +48,6 @@
                         foreach($docs as $doc)
                         { // should be one doc
                           extract($doc);
-                          //print "<p>$file_unittitle: $pages</p>";
                           if (! isset($file_unitdate_display))
                           {
                             $file_unitdate_display = 'n.d.';

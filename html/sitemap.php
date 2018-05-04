@@ -35,9 +35,7 @@
                 foreach($facet_fields as $facet) {
                         foreach(array_keys($facet) as $key) {
                                 print "<url>\n";
-                                //print "<loc>http://ldpd.lamp" . $env . ".columbia.edu/lehman/search/?wt=phps&amp;file_unittitle_t=&#34;". urlencode($key) . "&#34;&amp;rows=20</loc>\n"; 
                                 print "<loc>http://lehman.cul.columbia.edu/search/?wt=phps&amp;file_unittitle_t=&#34;". urlencode($key) . "&#34;&amp;rows=20</loc>\n"; 
-//htmlentities($key, ENT_QUOTES, 'UTF-8') . "&#34;&amp;rows=20</loc>\n";
                                 print "<lastmod>2008-04-29</lastmod>\n";
                                 print "<changefreq>monthly</changefreq>\n";
                                 print "<priority>0.8</priority>\n";

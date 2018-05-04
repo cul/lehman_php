@@ -22,19 +22,12 @@ function makeQuery($query) {
         $sortSlice = explode(";", $query);
         $year = $month = $day = $fromYear = $fromMonth = $fromDay = $toYear = $toMonth = $toDay = "";
 
-        //if ($sortSlice[1]) {
-        //        //print "Sort = $sortSlice[1]<br />";
-        //        $sort = $sortSlice[1];
-        //}
-
 	$operator = "AND";
 
         // now, get queries
         if ($sortSlice[0]) {
                 $queryArray1 = explode(" AND ",$sortSlice[0]);
-		//print "<pre>First sort"; print_r($queryArray1); print "</pre>";
 
-		//$queryArray2 = explode(" OR ", $sortSlice[0]);
 		$queryArray3 = array();
 
 		foreach($queryArray1 as $q) {
@@ -43,27 +36,13 @@ function makeQuery($query) {
 				$operator = "AND"; // changed from OR
 			foreach($qA as $qB)
 				array_push($queryArray3,$qB);
-		//	print_r($qA);
 
 		}
-
-		/*foreach($queryArray2 as $q) {
-			$qA = explode(" AND ", $q);
-			foreach($qA as $qB)
-				array_push($queryArray3,$qB);
-		}
-		*/
-
-		//$queryArray = array_merge($queryArray1, $queryArray2);
-		//print "<pre>Array3";print_r($queryArray3);print "</pre>";
-		
-		//$queryArray = explode(" AND ",$sortSlice[0]);	
 
 		$queryArray = $queryArray3;
 
                 foreach($queryArray as $qSlice) {
                      if (stristr($qSlice, "unitdate_iso")) {
-			//print $qSlice . "<br />";
                         $qSlice = str_replace('[', '', $qSlice);
                         $qSlice = str_replace(']', '', $qSlice);
                         //$qSlice = str_replace('-01-01T23:59:59Z', '', $qSlice);
@@ -71,9 +50,6 @@ function makeQuery($query) {
                         $dateRange = explode(" TO ", substr($qSlice, 13, strlen($qSlice)));
                         $from = $dateRange[0];
                         $to = $dateRange[1];
-
-			//print "$from = FROM<br />";
-			//print "$to = TO<br />";
 
                         $fromArr = explode("-", $from);
                         $fromYear = $fromArr[0];
@@ -105,10 +81,8 @@ function makeQuery($query) {
 			$isFromYear = false;
 
                         if ( isset($qSlice[0]) && isset($qSlice[1]) ) {
-				//print "qSlice1  = " . $qSlice[1] . "<br />";
                                 if (!stristr($qSlice[0],"file_unitdate_display_t")) {
 					if ($formKeys[$qSlice[0]] != "") {
-						//$formKeys[$qSlice[0]] .= " AND " . $qSlice[1];
 						$formKeys[$qSlice[0]] .= " $operator " . $qSlice[1];
 					}
 					else {
@@ -117,7 +91,6 @@ function makeQuery($query) {
                                 }
                                 else { 
                                         // deal with date
-                                        //$pattern = "/ldpd_leh_\d{4}_\d{4}/";
                                         $dateArr = explode("-",$qSlice[1]);
 					if (count($dateArr) > 1) {
                                         	// need to replace asterisks, since initial dates are NOT wildcarded
@@ -137,7 +110,6 @@ function makeQuery($query) {
 								$formKeys['freetext'] .= " AND ";
 						}
 
-						//$formKeys['freetext'] .= "file_unitdate_display_t:" . $qSlice[1];
 						$formKeys['freetext'] .= $qSlice[0] . ":" . $qSlice[1];
 					}	
                                 } // date
@@ -146,16 +118,13 @@ function makeQuery($query) {
 				if (preg_match('/ OR /', $qSlice[0])) {
                                 	$isOr = false;
                                         $monthA = explode(" OR ", $qSlice[0]);
-					//print_r($monthA);
                                        	if ($formKeys['freetext'] != "") {
                                         	$formKeys['freetext'] .= " AND ";
                                        	} 
                                         foreach($monthA as $m) {
-						//print $m . "<br />";
                                                 if (!$isOr)
                                                         $isOr = true;
                                                 else {
-                                                        //$formKeys['freetext'] .= " OR ";
                                                         if(preg_match('/unitdate/',$formKeys['freetext']))
                                                                 $formKeys['freetext'] .= " OR ";
                                                         else
@@ -163,7 +132,6 @@ function makeQuery($query) {
 
 						}
 
-                                                //$formKeys['freetext'] .= "file_unitdate_display_t:" . $m;
 						$formKeys['freetext'] .= $qSlice[0] . ":" . $m;
 
                                         } // end FOREACH monthArr
@@ -176,10 +144,6 @@ function makeQuery($query) {
                 } // end FOREACH $queryArray
         } // end IF sortSlice[0]
 
-        //print "<pre>";
-        //print_r($formKeys);
-        //print "</pre>";
-
         $newQ = "";
 
 	if (! isset($formKeys['rows']) || $formKeys['rows'] == "")
@@ -191,7 +155,6 @@ function makeQuery($query) {
         }
 
 
-	//print $operator . "<br />";
         $newQ .= "fromYear=$fromYear&fromMonth=$fromMonth&fromDay=$fromDay&toYear=$toYear&toMonth=$toMonth&toDay=$toDay&year=$year&month=$month&day=$day&sort
 =" . urlencode($sort) . "&operator=$operator";
 

@@ -25,7 +25,6 @@
 		text-decoration:none;
 		font-family:inherit;
 	}
-	/*#a {padding:5px;width:130px;left:70;right:20px;top:250px;border:1px solid #dddddd;position:absolute;background-color:#f3f8fd;}*/
 	#a {padding:5px;width:130px;left:755;top:160px;border:1px solid #dddddd;position:absolute;background-color:#f3f8fd;}
 	#b {height:50px;width:50px;left:70px;top:50px;border:1px solid pink;position:absolute;background-color:#FFEFFE;}
 	#menu { background:transparent;padding:0px; margin:0px;display:block;}
@@ -87,10 +86,6 @@
 <a name="top"></a>
 
 <div align="left" style="margin:0px;"><div style="background-color:#2d2a62">
-
-  <?php
-    //include('/www/data/cu/lweb/ssi/navbars/navbar_top.simplified.htm');
-  ?>
 
   <div style="margin: 0px; background-color: rgb(45, 42, 98); color: rgb(255, 255, 255); font-size: 10px; border: 1px solid rgb(45, 42, 98); width: 758px;" align="left">
     <a href="http://library.columbia.edu"><img src="http://library.columbia.edu/etc/designs/libraryweb/default/images/crown.w18h14.white.gif" alt="crown" border="0" height="14" width="18"></a>&nbsp;<a href="http://www.columbia.edu/cu/" style="color: rgb(255, 255, 255); text-decoration: none;">CU Home</a>&nbsp;&gt;&nbsp;<a href="http://library.columbia.edu/" style="color: rgb(255, 255, 255); text-decoration: none;">Libraries Home</a>

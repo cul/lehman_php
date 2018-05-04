@@ -48,11 +48,6 @@
     </select>
 
 <input type="submit" value=" Go " />&#160;<input type="button" value="Clear" onClick="resetMe()"/>
-<!-- 
-                <label for="year">Date: </label>
-                <select name="year" id="year" onBlur="checkDate('day')">
-                <option value="">[year]</option>
--->
 <?php
         $dupArr = array();
         $result = searchSolr("q=subseries:Correspondence&rows=0&facet=true&facet.field=file_unitdate&facet.sort=false&facet.limit=10000&wt=phps&facet.mincount=1",$appUrl,"");
@@ -75,49 +70,9 @@
         } // IF facet_counts
 	
 	sort($dupArr);
-   /*     foreach($dupArr as $date) {
-		//sort($date);
-                print '<option value="' . $date . '"';
-                if (isset($_GET['year']) && ($_GET['year'] == $date))
-                        print " selected=\"selected\"";
-		print '>'. $date . "</option>\n";
-        }
 
-*/
-?>
-<!-- 
-                </select>&#160;
-
-                <select name="month" id="month" onBlur="checkDate('day')">
-		<option value="">[month]</option>
--->
-		<?php
 			$month = array("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec");
-			/*for ($i=0; $i < 12; $i++) {
-				print '<option value="' . str_pad($i+1,2,"0", STR_PAD_LEFT) . '"';
-				if( isset($_GET['month']) && ($_GET['month'] == (str_pad($i+1,2,"0", STR_PAD_LEFT))) )
-					print ' selected="selected"';
-				print ">" . $month[$i]. "</option>\n";
-			}*/
 		?>
-<!--                 </select>
-
-                <select name="day" id="day" disabled="true" onBlur="checkDate('day')">
-                <option selected value="">[day]</option>
--->
-<?php
-/*                for ($i=1; $i < 32; $i++) {
-			print '<option value="'. str_pad($i,2,"0", STR_PAD_LEFT) . '"';
-			//if(isset($_GET['day']) && ($_GET['day'] == $i))
-				//print ' selected="selected"'; 
-                        print '>' . $i . "</option>\n";
-                }
-*/
-?>
-<!-- 
-                </select>
-</p>
--->
 
                 <p>Words in Documents (<a href="/lehman/text/">about this option</a>): &#160;&#160;
 		<input type="text" size="30" name="freetext" value="<?php 
@@ -136,12 +91,7 @@
 				}
 			?>" />
                 &#160;<input type="checkbox" name="ocr">Search only text</ocr></p> 
-<!-- 
-<p><a href="javascript:toggle('dateRange', 'Date range search and other options', 'close options')" class="toggle"><img id="IdateRange" border="0" src="http://www.columbia.edu/cu/lweb/images/icons/left-off.gif"><span id="spanblurbdateRange">Date range search and other options</span></a></p>
-<div id="LdateRange" style="display:none;">
--->
 <p><label for="dateRange">Date</label> (<a href="/lehman/text/#date">about this option</a>):&#160;From <select name="fromYear" id="fromYear">
-<!--  onBlur="checkDate('fromDay')"> -->
 <option value="">[year]</option>
 <?php
         foreach($dupArr as $date) {

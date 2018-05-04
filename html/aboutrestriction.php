@@ -1,6 +1,5 @@
 <?php
 	$htmlTitle = "Lehman Special Correspondence Files::About the Restrictions on the Files";
-	//$addlBody = 'onload="checkDate();"';
 	include_once('includes/header.php');
 
 

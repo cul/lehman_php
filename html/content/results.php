@@ -57,7 +57,6 @@ function writeCookieError() {
 }
 
 function isUserInAgreement($myQuery) {
-	//header("Location: /lehman/restricted.php" . $_SERVER['QUERY_STRING']);
 	header("Location: /lehman/restricted.php?" . $myQuery);
 }
 
@@ -66,16 +65,11 @@ function isUserInAgreement($myQuery) {
  */
 	session_start();
 
-	//if (stristr( $_SERVER["HTTP_REFERER"], "search.php")) {
 	if (stristr( $_SERVER["HTTP_REFERER"], "search")) {
-	// if (!stristr( $_SERVER["HTTP_REFERER"], "results.php")) {
 		unset($_SESSION['query']);
 		unset($_SESSION['items']);
 		unset($_SESSION['itemNo']);
-		//session_destroy();
 	} 
-
-	//print $_SERVER["HTTP_REFERER"] . "<br />";
 
 	if (isset($_GET['debug']))
 		$_SESSION = array();
@@ -85,11 +79,6 @@ function isUserInAgreement($myQuery) {
 	// here we go!
 
 	$isIpRestricted = false; //isRestricted();
-	/*if ($isIpRestricted <= 0) {
-		print "<script>location.replace(\"restricted.php\");</script>";
-		print "<noscript>This item is restricted.</noscript>";
-		exit;
-	}*/
 
 	$appUrl = "UNKNOWN";
 	$env = "UNKNOWN";
@@ -109,21 +98,10 @@ function isUserInAgreement($myQuery) {
 
 	// no document id --> error
 
-	//print $_SERVER['PHP_SELF'] . "<br />";
-	//print_r($_GET);
-	//print_r($_SERVER);
-
-	//print  $_SERVER['REQUEST_URI'] . "<br>";
-	//print  $_SERVER['QUERY_STRING'] . "<br>";
-	
 	$myQuery = str_replace("/lehman/" . $_SERVER['QUERY_STRING'], '', $_SERVER['REQUEST_URI']);
-	//print $myQuery . " = 1<br />";
 	$myQuery = urldecode(str_replace("?&q=",'',$myQuery));
-	//print $myQuery . " = 2<br />";
 	if ($myQuery == "")
 		$myQuery = "document_id:" . $_GET['document_id'];
-
-	//print $myQuery . "= 3<br />";
 	
 	$pattern = "/ldpd_leh_\d{4}_\d{4}/";
 
@@ -143,11 +121,8 @@ function isUserInAgreement($myQuery) {
 		$returnQ = $myQuery;
 		$items = 1;
 
-		//if (isset($_GET['q'])) {
 		if($returnQ) {
-			//$returnQ = makeQuery($_GET['q']);
 			$returnQ=$myQuery;
-			//$q = $_GET['q'];
 			$q = $returnQ;
 		}
 
@@ -155,18 +130,14 @@ function isUserInAgreement($myQuery) {
        		         $_SESSION['query'] = $q;
         	}
 		else {
-			//if($_GET['q'] != $_SESSION['query'])
 			if ($returnQ != $_SESSION['query']) {
-				//$_SESSION['query'] == $_GET['q'];
 				$_SESSION['query'] == $returnQ;
 			}
-			//$returnQ = makeQuery($_SESSION['query']);
 			$returnQ=$myQuery;
 		}
 
 		if (preg_match('/\&items\=/',$myQuery)) {
 			preg_match('/items=([^`]*?)&/',$myQuery,$itemMatches);
-			//print "<pre>";print_r($itemMatches);print "</pre>";
 			if ($itemMatches[1] != "") {
 				$items = $itemMatches[1];
 			}
@@ -177,7 +148,6 @@ function isUserInAgreement($myQuery) {
 
 		if (preg_match('/\&itemNo\=/',$itemQuery)) {
                         preg_match('/itemNo=([^`]*?$)/',$itemQuery,$itemMatches);
-                        //print "<pre>";print_r($itemMatches);print "</pre>";
                         if ($itemMatches[1] != "") {
                                 $itemNo = intval($itemMatches[1]);
                         }
@@ -199,22 +169,11 @@ function isUserInAgreement($myQuery) {
 		$qUrl = "wt=phps&q=document_id:" . $_GET['document_id'] . "&rows=1";
 		$result = searchSolr($qUrl, $appUrl, "");
 
-                //DEBUG
-                if (isset($_GET['debug'])) {
-                        //print "\n<pre>\n";
-                        //print_r($result);
-                        //print "\n</pre>\n";
-			//print "<pre>Session:";
-			//print_r($_SESSION);
-			//print "</pre>";
-		}
 
 		extract($result);
 		extract($responseHeader);
 		extract($params);		
 		
-		// $docID = $docs[0]['document_id'];		
-
 		extract($response);
 		$pagination = "";
 
@@ -225,7 +184,7 @@ function isUserInAgreement($myQuery) {
 		// for prev/next
 		$myDocs = $docs;
 
-		$isImageRestricted = "public"; //$docs[0]['image_access'];
+		$isImageRestricted = "public";
 
 		$prev = "";
 		$next = "";
@@ -235,17 +194,11 @@ function isUserInAgreement($myQuery) {
 		$prevnextQ = urlencode($prevnextQA[0]);
 	
 		if ($itemNo > 0 && $_SESSION['items'] != 1) {
-			//$prev = '&wt=phps&q='. urlencode($_SESSION['query']) . '&rows=1&start=' . ($itemNo-1);
-			//$prev = '&wt=phps&q='. $_SESSION['query'] . '&rows=1&start=' . ($itemNo-1);
 			$prev = '&wt=phps&q='. $prevnextQ . '&rows=1&start=' . ($itemNo-1);
-			//print "prev: $prev<br />";
 		}
 
 		if ( ($itemNo + 1) < $_SESSION['items'] && $_SESSION['items'] != 1) {
-			//$next = '&wt=phps&indent=true&q='. urlencode($_SESSION['query']) . '&rows=1&start=' . ($itemNo+1);
-			//$next = '&wt=phps&indent=true&q='. $_SESSION['query'] . '&rows=1&start=' . intval($itemNo+1);
 			$next = '&wt=phps&indent=true&q='. $prevnextQ . '&rows=1&start=' . ($itemNo+1);
-			//print "next: $next<br />";
 		}
 
 		$prevDocId = "";
@@ -258,7 +211,6 @@ function isUserInAgreement($myQuery) {
 			extract($responseHeader);
 			extract($response);
 			extract($docs); // should be one doc
-			//$s = $_GET['itemNo']-1;
 			if ($docs[0])
 				$prevDocId = $docs[0]['document_id'];	
 		}
@@ -284,12 +236,9 @@ function isUserInAgreement($myQuery) {
 
 		$prevmsg = "&laquo;&nbsp;previous search result";
 		$nextmsg = "next search result&nbsp;&raquo;";
-		//$prevmsg = "&laquo;";
-		//$nextmsg = "&raquo;";
 
 		// changed from 100%
 		$tableprint =  "<table width='900' style='border:1px solid #ddd; background:#f3f8fd;margin-bottom:5px;'><tr>\n";
-		//$tableprint .= "<td align=right style='font-size:10px;'>$return</td>";
 		$tableprint .= "<td align=left width='450' style='font-size:10px;'>$return</td>";
 		$tableprint .= "<td align=right width='315' style='font-size:10px;border-right:1px solid #ddd'>"; // removed width=100;changed to right align
 		
@@ -310,7 +259,6 @@ function isUserInAgreement($myQuery) {
                         $tableprint .= '&#160;<a href="document_id=' . $nextDocId . '&itemNo=' . ($itemNo+1) . '" class="noUnderline">' . $nextmsg . '</a>';
                 }
 		$tableprint .= "</td>\n";	
-		//$tableprint .= "<td align=right style='font-size:10px;'>$return</td>";
 
 		$tableprint .= "</tr></table>";
 		print $tableprint;
@@ -349,8 +297,6 @@ print '<div style="width:898px;margin:1px;padding:1px;border:1px solid #ddd;back
 print "<span style=\"float:right;\"><a href=\"javascript:openCitation('close')\" style='text-decoration:none;padding:0 2px 2px 2px;margin:2px;border:1px solid #ccc;background:#2d2a62;color:#fff;font-weight:bold;font-size:10px;'>x</a></span>";
 print '<h2 style="color:#369;font-size:12px;">Citation (Chicago Manual of Style)</h2>';
 
-//<span style="font-size:10px;">[<a href="/lehman/about/#citation" target="_blank" class="noUnderline">About <img src="http://www.columbia.edu/cu/lweb/digital/collections/cul/texts/images/newW.png" /></a>]</span></h2>';
-
         $pattern = "/ldpd_leh_\d{4}_\d{4}/";
 
         if (!isset($_GET['document_id'])) {
@@ -383,18 +329,10 @@ print '</div></div>';
 
 
 
-			//print "</td></tr></table>\n";
-
-			//print $tableprint . "\n";
-			//print "<span style='font-size:10px'><br /></span>\n";
 			if ( ($isImageRestricted == "campus" && $isIpRestricted <= 0) || $isImageRestricted == "public") {
-				//print '&#160;View: <span id="controller1" style="font-size:12px;"><a style="text-decoration:none;border:1px solid #ccc; color:#ccc;padding:1px;" id="controller1" href="javascript:breakFrame(\'divBookImage\', \'1\')">A</a></span>&#160; <span id="controller2" style="font-size:18px"><a style="text-decoration:none;border:1px solid #369; padding:1px;" id="controller2" href="javascript:breakFrame(\'divBookImage\', \'2\')">A</a></span>&#160;&#160;<br />'; 
-                              //print '&#160;View: <a style="font-size:12px;text-decoration:none;border:1px solid #ccc; color:#ccc;padding:1px;" id="controller1" href="javascript:breakFrame(\'divBookImage\', \'1\')">A</a>&#160; <a style="font-size:18px;text-decoration:none;border:1px solid #369; padding:1px;" id="controller2" href="javascript:breakFrame(\'divBookImage\', \'2\')">A</a>&#160;&#160;';
-				//print "<img src=\"http://www.columbia.edu/cu/lweb/img/assets/4035/printer-friendly_width.gif\" alt=\"\" border=\"0\" width=\"650\">&#160;&#160;<a href=\"print.php?document_id=$document_id\" alt=\"printer-friendly version\" onmouseover=\"document.images['printer'].src='http://www.columbia.edu/cu/lweb/img/assets/4035/printer.on.gif'\" onmouseout=\"document.images['printer'].src='http://www.columbia.edu/cu/lweb/img/assets/4035/printer.off.gif'\" title=\"printer-friendly version\"><img name=\"printer\" src=\"http://www.columbia.edu/cu/lweb/img/assets/4035/printer.off.gif\" alt=\"printable version\" title=\"printer-friendly version\" align=\"middle\" border=\"0\"></a>&#160;<a href=\"print.php?document_id=$document_id\" alt=\"printable version\" style=\"text-decoration: none;font-size:10px\" onmouseover=\"document.images['printer'].src='http://www.columbia.edu/cu/lweb/img/assets/4035/printer.on.gif'\" onmouseout=\"document.images['printer'].src='http://www.columbia.edu/cu/lweb/img/assets/4035/printer.off.gif'\" title=\"printable version\">printer-friendly version</a>\n";
 				print '<div style="font-size:3px;padding:0;margin:0"><br /></div>';
 			}
 			if ( ($isImageRestricted == "campus" && $isIpRestricted <= 0) || $isImageRestricted == "public") {
-				//print '<div id="pageMenu" style="float:right;width:900px;height:auto;border:1px solid #ccc;border-bottom:transparent;overflow:auto;text-align:left;background:#eee;padding:0;margin:0">' . "\n";
 				print '<div id="pageMenu" style="width:900px;height:auto;border:1px solid #ccc;border-bottom:transparent;overflow:auto;text-align:left;background:#eee;padding:0;margin:0">' . "\n";
 
 				if ($pages > 1) {
@@ -405,10 +343,8 @@ print '</div></div>';
 				else {
 					/// issue w/ie?
 					print "<table width='880' style='text-align:center;color:#999;padding:0px'><tr><td style='font-size:10px;'>Page 1 of 1</td></tr></table>\n";
-					//print "<table width=900 style='text-align:center;color:#999;padding:0px'><tr><td>Page 1 of 1</td></tr></table>\n";
 				}
 				print '</div>';
-				//print '<div id="divBookImage" style="float:right;width:900px;height:900px;overflow:auto;text-align:center;background:#eee;border:1px solid #ddd;">';
 				print '<div id="divBookImage" style="float:left;width:900px;overflow:auto;text-align:left;background:transparent;border:1px solid #ddd;padding-top:2px;padding-bottom:2px;">&#160;';
 				print '<img id="imgBookImage" src="' . $dlo . '?obj=' . $document_id . '_' . str_pad(1, 3, "0", STR_PAD_LEFT) . '&size=900" alt="' . $genreform1 . '">';
 				print '</div>';
@@ -416,7 +352,6 @@ print '</div></div>';
 				print '<div id="ocrText" class="ocrText" align="center" style="border:1px solid #ccc;width:900px;height:500px;text-align:center;overflow:auto;display:none;">';
 				print "<div id=\"ocrWindow\" style=\"width:500px;float:left;\">";
 				print "<div style=\"border:1px solid #ddd; background:#f3f8fd;padding:5px;margin:10px;\">Please note: this text may be incomplete.  For more information about this OCR, view the \"Words in Documents\" section in <a href=\"/lehman/text/\">About Searching</a>.</div>\n";
-                        	//print $ocr . '</div>';
                         	print htmlspecialchars($ocr) . '</div>';
 				print "</div>\n";
 				print "<br clear=all />\n";
@@ -430,7 +365,6 @@ print '</div></div>';
                                 else {
                                         /// issue w/ie?
                                         print "<table width='880' style='text-align:center;color:#999;padding:0px'><tr><td style='font-size:10px;'>Page 1 of 1</td></tr></table>\n";
-                                        //print "<table width=900 style='text-align:center;color:#999;padding:0px'><tr><td>Page 1 of 1</td></tr></table>\n";
                                 }
                                 print '</div>';
 
@@ -441,7 +375,6 @@ print '</div></div>';
 				print '</div>';
 				
 			}
-			//print "<p><a href=\"javascript:openCitation()\" class=\"noUnderline\"><img src=\"http://www.columbia.edu/cu/lweb/digital/collections/cul/texts/images/bookcitation-sm.gif\" alt=\"citation\" />&#160;Download citation&#160;&#187;</a></p>";
 			print "<div>\n";
 			print "<br clear=all><p><strong>Document information:</strong><br />";
 			print "Correspondent: $file_unittitle<br />";
@@ -482,10 +415,6 @@ print '</div></div>';
 			print "</ul>";
 			} // FOREACH debug
 		
-		/*
-			extract($doc);
-			print "<p><a href='$filename'>$correspondent</a> ($genreform)</p>";
-		*/
 		} // end FOREACH $docs
 
 	} // end IF $_GET['q']
@@ -583,7 +512,6 @@ ns/cul/texts/images/min.gif\" alt=\"min\" border=\"0\"></img></a><a id=\"max\" h
 
 	function writeFooter()
         {
-	  //include_once('includes/pre_footer.php');
           // if you want a sidebar, put it here
           // include_once('includes/sidebar.php');
           //include_once('includes/footer_flex.php');
@@ -724,11 +652,9 @@ function getSimilarDocs($file_unittitle, $appUrl) {
 	extract($result);
 	extract($response);
 
-	//echo '<br>makeQuery returns:<br /> ' . makeQuery(urldecode($qUrl)) . '<br>';
 
 	if (substr($file_unittitle,-1) == ".")
 		$file_unittitle = substr($file_unittitle,0,-1);
 	print "There are $numFound documents related to $file_unittitle.&#160;&#160;<strong><a class=\"noUnderline\" href=\"/lehman/search/?wt=phps&" . makeQuery(urldecode($qUrl)) . "\">View documents&#160;&#187;</a></strong>\n";
-	//print "<pre>\n"; print_r($result); print "</pre>\n";
 } // end FUNCTION getSimilarDocs
 ?>

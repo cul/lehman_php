@@ -91,9 +91,6 @@ function isUserInAgreement() {
                 if (isset($_GET['debug']))
                         print "URL:<br /><a href='" . str_replace("phps", "php", $searchUrl) . "' target='_blank'>$searchUrl</a>\n";
 
-		/*$serializedResult = file_get_contents($searchUrl);
-		$result = unserialize($serializedResult);
-		*/
 		$qUrl = "wt=phps&q=document_id:" . $_GET['document_id'] . "&rows=1";
 		$result = searchSolr($qUrl, $appUrl, "");
 
@@ -122,7 +119,6 @@ function isUserInAgreement() {
 		// for prev/next
 		$myDocs = $docs;
 
-		//$isImageRestricted = $docs[0]['image_access'];
                 // restrictions not implemented - all images are public
 		$isImageRestricted = "public"; 
 

@@ -25,15 +25,7 @@
                 <input type="hidden" name="facet.mincount" value="1" />
                 <input type="hidden" name="h1" value="on" />
                 <input type="hidden" name="h1.f1" value="ocr" />
-<!--            
-		<input type="hidden" name="fragsize" value="50" /> 
--->
                 <input type="hidden" name="f1" value="*,score" />
-<!--
-                <input type="hidden" name="snippets" value="5" />
-                <input type="hidden" name="h1.simple.pre" value="%3Cspan%20class%3Dhighlight%3E">
-                <input type="hidden" name="h1.simple.post" value="%3C/span%3E">
--->
         </form>
 
 
