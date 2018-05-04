@@ -479,7 +479,7 @@
 		if (!isset($_GET['q']))  
 			$query = "q=$query";
 
-		$facetAddOn = "&facet.date.start=1880-01-01T00:00:00.000Z&facet.date.end=1990-01-01T00:00:00.000Z&facet.date.gap=%2B10YEAR&facet.date=unitdate_iso";
+		$facetAddOn = "&f.unitdate_iso.facet.range.start=1880-01-01T00:00:00.000Z&f.unitdate_iso.facet.range.end=1990-01-01T00:00:00.000Z&f.unitdate_iso.facet.range.gap=%2B10YEAR&facet.range=unitdate_iso";
 
 		
                 if ( ( isset($_GET['rows']) && $_GET['rows'] == "") 
