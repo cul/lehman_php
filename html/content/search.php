@@ -774,24 +774,25 @@
 		// print all of the facets that are greater than 0 for the date range, but if there are ranges
 		// between items that have 0, indicate that as well
 
-		$noZeroes1 = $noZeroes2 = 0;
+		$matchingDateRanges = $matchingCorrespondents = 0;
 		foreach(array_keys($dateRanges) as $f) {
 			if ("{$dateRanges[$f]}" != "0")
-				$noZeroes1++;	
+				$matchingDateRanges++;	
 		}
 
 		foreach(array_keys($correspondents) as $f) {
 			if ("{$correspondents[$f]}" != "0")
-				$noZeroes2++;
+				$matchingCorrespondents++;
 		}
 
-		if ($noZeroes1 > 2 || $noZeroes2 > 0) { //0=value? 1=gap 2=end
-			print "<div style='float:right;padding:0px;margin-right:5px;width:135px;font-size:12px;background-color:#fff;'>"; //border:1px solid #ccc;'>\n";
+		print "<div style='float:right;padding:0px;margin-right:5px;width:135px;font-size:12px;background-color:#fff;'>"; //border:1px solid #ccc;'>\n";
 
-			print "<table cellpadding=0 cellspacing=0 class='limitTable'>\n<tr>\n<th style='text-align:center;border-bottom:1px solid #ccc;background-color:#eee;font-size:12px;height:22px'><p><strong>Limit results</strong></p></th>\n</tr>\n";
-			print "<tr>\n<td style='padding:3px;font-size:11px;'>\n";
+		print "<table cellpadding=0 cellspacing=0 class='limitTable'>\n<tr>\n<th style='text-align:center;border-bottom:1px solid #ccc;background-color:#eee;font-size:12px;height:22px'><p><strong>Limit results</strong></p></th>\n</tr>\n";
+		print "<tr>\n<td style='padding:3px;font-size:11px;'>\n";
 
-			if ($noZeroes1>2) {
+		if ($matchingDateRanges > 2 || $matchingCorrespondents > 0) { //0=value? 1=gap 2=end
+
+			if ($matchingDateRanges>2) {
 				print "<p><strong>Date:</strong> <br />";
 				$newQ = urldecode($q);
 				$newQ = str_replace($urlAllDate,"",$newQ);
@@ -821,7 +822,7 @@
 						if ($toYear <= (((int)substr($k,0,4))+9) || !$isDate)
 							$toYear = (((int)substr($k,0,4))+9);
 
-						if (!$isDate || ($isDate && $noZeroes1 > 3)) {
+						if (!$isDate || ($isDate && $matchingDateRanges > 3)) {
 							print "<a class=\"noUnderline\" href=\"$url" . makeQuery("unitdate_iso:[" . $fromYear . "-01-01 TO ". $toYear . "-12-31]" . " AND ". $newQ) . $rows . "\">" . $fromYear . "-" .  $toYear . "</a> (" . $dateRanges[$k] . ")<br />\n";
 						} // if isDate 
 						else {
@@ -836,12 +837,11 @@
 						$printedOnce = !$printedOnce;
 					}
 				}
-				if ($noZeroes2 <= 0)
-					print "</p></td></tr></table></div>\n"; //</div>\n";
+				print "</p>";
 			} // end IF noZeroes1
 		}
 
-		if (count($correspondents) > 0 && $noZeroes2 > 0) {
+		if (count($correspondents) > 0 && $matchingCorrespondents > 0) {
 			print "<p><strong>Corresp. File:</strong> <br />";
 
 			if ($isCorrespondent && ($isGenre || $isDate)) {
@@ -885,9 +885,7 @@
 				$restOfFacet .= "</div>\n";
 				print $restOfFacet . "\n";
 			}
-
-			if (count($genreform) <= 0)
-				print "</p></td></tr></table></div>\n";
+			print "</p>";
 		} // end IF correspondent facets
 
 		if (count($genreform > 0)) {
@@ -916,8 +914,10 @@
 						print ucfirst($genre) . " (" . $genreform[$k] . ")<br />";
 				}
 			} // end FOREACH genreform
-			print "</p></td></tr></table></div>\n";
+			print "</p>";
 		} // end IF genreform facet		
+
+		print "</td></tr></table></div>\n";
 		
 		if (count($dateRanges) || count($correspondents))
 			 print "<table class=\"resultsList\" style=\"width:580px;\">\n<tr>\n";
