@@ -739,7 +739,7 @@
 			$isCorrespondent = true;
 			$urlAllCorrespondent = "file_unittitle_t:";
 		}
-               
+
 		// if date has been set
 		if ( ( isset($_GET['fromYear']) && $_GET['fromYear']!= NULL && $_GET['fromYear'] != "" ) ||
 		   ( isset($_GET['fromMonth']) && $_GET['fromMonth']!= NULL && $_GET['fromMonth'] != "" ) ||
@@ -824,7 +824,7 @@
 
 						if (!$isDate || ($isDate && $matchingDateRanges > 3)) {
 							print "<a class=\"noUnderline\" href=\"$url" . makeQuery("unitdate_iso:[" . $fromYear . "-01-01 TO ". $toYear . "-12-31]" . " AND ". $newQ) . $rows . "\">" . $fromYear . "-" .  $toYear . "</a> (" . $dateRanges[$k] . ")<br />\n";
-						} // if isDate 
+						}
 						else {
 							print $fromYear . '-' . $toYear . ' (' . $dateRanges[$k] . ")<br />\n";
 						}
