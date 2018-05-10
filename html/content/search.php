@@ -719,38 +719,38 @@
 		if (!stristr("rows=", $q))
 			$rows = "&rows=20";
 
-               /* *************************** FACETS ************************************** */
+		/* *************************** FACETS ************************************** */
 
-               $isGenre = false;
-               $isCorrespondent = false;
-               $isDate = false;
+		$isGenre = false;
+		$isCorrespondent = false;
+		$isDate = false;
 
 		// these will hold the URLs that would correspond to what should be replaced if "all" [date/corr/genre]  is requested 
-               $urlAllGenre = $urlAllCorrespondent = $urlAllDate = "";
+		$urlAllGenre = $urlAllCorrespondent = $urlAllDate = "";
 
-               	// if genreform has been set
-              	if (isset($_GET['genreform1_t']) && $_GET['genreform1_t']!= NULL && $_GET['genreform1_t'] != "") {
-                       $isGenre = true;
-                       $urlAllGenre = "genreform1_t:";
-               	}
+		// if genreform has been set
+		if (isset($_GET['genreform1_t']) && $_GET['genreform1_t']!= NULL && $_GET['genreform1_t'] != "") {
+			$isGenre = true;
+			$urlAllGenre = "genreform1_t:";
+		}
 
-                // if correspondent has been set
-               	if (isset($_GET['file_unittitle_t']) && $_GET['file_unittitle_t']!= NULL && $_GET['file_unittitle_t'] != "") {
-                         $isCorrespondent = true;
-                         $urlAllCorrespondent = "file_unittitle_t:";
-                }
+		// if correspondent has been set
+		if (isset($_GET['file_unittitle_t']) && $_GET['file_unittitle_t']!= NULL && $_GET['file_unittitle_t'] != "") {
+			$isCorrespondent = true;
+			$urlAllCorrespondent = "file_unittitle_t:";
+		}
                
-                 // if date has been set
-                 if ( ( isset($_GET['fromYear']) && $_GET['fromYear']!= NULL && $_GET['fromYear'] != "" ) ||
-                      ( isset($_GET['fromMonth']) && $_GET['fromMonth']!= NULL && $_GET['fromMonth'] != "" ) ||
-                      ( isset($_GET['fromDay']) && $_GET['fromDay']!= NULL && $_GET['fromDay'] != "" ) ||
-                      ( isset($_GET['toYear']) && $_GET['toYear']!= NULL && $_GET['toYear'] != "" ) ||
-                      ( isset($_GET['toMonth']) && $_GET['toMonth']!= NULL && $_GET['toMonth'] != "" ) ||
-                      ( isset($_GET['toMonth']) && $_GET['toMonth']!= NULL && $_GET['toMonth'] != "" )
-               	     ) {
-                      $isDate = true;
-                      $urlAllDate = "unitdate_iso:";
-                 }
+		// if date has been set
+		if ( ( isset($_GET['fromYear']) && $_GET['fromYear']!= NULL && $_GET['fromYear'] != "" ) ||
+		   ( isset($_GET['fromMonth']) && $_GET['fromMonth']!= NULL && $_GET['fromMonth'] != "" ) ||
+		   ( isset($_GET['fromDay']) && $_GET['fromDay']!= NULL && $_GET['fromDay'] != "" ) ||
+		   ( isset($_GET['toYear']) && $_GET['toYear']!= NULL && $_GET['toYear'] != "" ) ||
+		   ( isset($_GET['toMonth']) && $_GET['toMonth']!= NULL && $_GET['toMonth'] != "" ) ||
+		   ( isset($_GET['toMonth']) && $_GET['toMonth']!= NULL && $_GET['toMonth'] != "" )
+		) {
+			$isDate = true;
+			$urlAllDate = "unitdate_iso:";
+		}
 
 		$qB = urldecode(str_replace($sort,'',$q));
 		if (substr($qB,-1) == ";")
@@ -780,10 +780,10 @@
 				$noZeroes1++;	
 		}
 
-                foreach(array_keys($correspondents) as $f) {
-                        if ($correspondents[$f] != "0")
-                                $noZeroes2++;
-                }
+		foreach(array_keys($correspondents) as $f) {
+			if ($correspondents[$f] != "0")
+				$noZeroes2++;
+		}
 
 		if ($noZeroes1 > 2 || $noZeroes2 > 0) { //0=value? 1=gap 2=end
 			print "<div style='float:right;padding:0px;margin-right:5px;width:135px;font-size:12px;background-color:#fff;'>"; //border:1px solid #ccc;'>\n";
@@ -793,9 +793,9 @@
 
 			if ($noZeroes1>2) {
 				print "<p><strong>Date:</strong> <br />";
-                                $newQ = urldecode($q);
-                                $newQ = str_replace($urlAllDate,"",$newQ);
-                                $newQ = str_replace("AND  AND","AND",$newQ);
+				$newQ = urldecode($q);
+				$newQ = str_replace($urlAllDate,"",$newQ);
+				$newQ = str_replace("AND  AND","AND",$newQ);
 
 				if ($isDate && ($isCorrespondent || $isGenre)) {
 					print "<a class=\"noUnderline\" href=\"$url" . makeQuery($newQ) . "\">All</a>&#160&#187;<br />";
@@ -806,14 +806,13 @@
 				$holdNonZeroes = array();
 				foreach(array_keys($dateRanges) as $k) { // assumption -- these come back in order?
 					if ($dateRanges[$k] > 0 && $k != "gap" && $k != "end") {
-       	                                 	if (count($holdNonZeroes) > 0) {
-       	                                         	foreach($holdNonZeroes as $h)
-                                                       		print $h . "\n";
-                                                	//unset($holdNonZeroes);
-                                                	$holdNonZeroes = array();
-                                        	}
-							$fromYear = (int)substr($k,0,4);
-							$toYear = (((int)substr($k,0,4))+9);
+						if (count($holdNonZeroes) > 0) {
+							foreach($holdNonZeroes as $h)
+								print $h . "\n";
+							$holdNonZeroes = array();
+						}
+						$fromYear = (int)substr($k,0,4);
+						$toYear = (((int)substr($k,0,4))+9);
 
 						// if info falls out of range of facet, re-range it	
 						if (($fromYear <= (int)substr($k,0,4)) || !$isDate) 
@@ -842,18 +841,15 @@
 			} // end IF noZeroes1
 		}
 
+		if (count($correspondents) > 0 && $noZeroes2 > 0) {
+			print "<p><strong>Corresp. File:</strong> <br />";
 
-
-
-                if (count($correspondents) > 0 && $noZeroes2 > 0) {
-                        print "<p><strong>Corresp. File:</strong> <br />";
-
-                       	if ($isCorrespondent && ($isGenre || $isDate)) {
-                              $newQ = urldecode($q);
-                              $newQ = str_replace($urlAllCorrespondent,"",$newQ);
-                              $newQ = str_replace("AND  AND","AND",$newQ);
-                              print "<a class=\"noUnderline\" href=\"$url" . makeQuery($newQ) . "\">All</a>&#160&#187;<br />";
-                        }
+			if ($isCorrespondent && ($isGenre || $isDate)) {
+				$newQ = urldecode($q);
+				$newQ = str_replace($urlAllCorrespondent,"",$newQ);
+				$newQ = str_replace("AND  AND","AND",$newQ);
+				print "<a class=\"noUnderline\" href=\"$url" . makeQuery($newQ) . "\">All</a>&#160&#187;<br />";
+			}
 
 			$i = 0;
 			$VISIBLE = 5;
@@ -864,67 +860,68 @@
 			}
 			else
 				$restOfFacet = "&#160;<a class=\"noUnderline\" href=\"javascript:toggle('rest','More corresp. (" . (count($correspondents)-5) . " more)','Less corresp.')\" class=\"toggle\"><img id=\"Irest\" border=\"0\" src=\"http://www.columbia.edu/cu/lweb/images/icons/left-off.gif\"><span id=\"spanblurbrest\">More corresp. (" . (count($correspondents)-5) . " more)</span></a>\n";
-				$restOfFacet .= '<div class="expand" id="Lrest" style="display:none;">';
-                        foreach(array_keys($correspondents) as $k) {
-                               	if ($correspondents[$k] > 0 && $k != "gap" && $k != "end") {
+			$restOfFacet .= '<div class="expand" id="Lrest" style="display:none;">';
+
+			foreach(array_keys($correspondents) as $k) {
+				if ($correspondents[$k] > 0 && $k != "gap" && $k != "end") {
 					$sortA = $sort . ";";
 					$qA = str_replace($sortA, "", $q);	
 					$qA = makeQuery('file_unittitle_t:"' . $k . '" AND '. urldecode($qA));
 					$qA = str_replace("%253B", ";", $qA);
 					if ($i < $VISIBLE) {
 						if (!$isCorrespondent)
-                                       			print "<a class=\"noUnderline\" href=\"$url" . $qA . $rows . "\">$k</a> ($correspondents[$k])<br />";
+							print "<a class=\"noUnderline\" href=\"$url" . $qA . $rows . "\">$k</a> ($correspondents[$k])<br />";
 						else
-							print "$k ($correspondents[$k])<br />";
+								print "$k ($correspondents[$k])<br />";
 					}
 					else {
 						$restOfFacet .= "<a class=\"noUnderline\" href=\"$url" . $qA . $rows . "\">$k</a> ($correspondents[$k])<br />";
 					}
 					$i++;
-                                }
-                        }
+				}
+			}
+
 			if ($VISIBLE >= 5) {
 				$restOfFacet .= "</div>\n";
 				print $restOfFacet . "\n";
 			}
 
-                        if (count($genreform) <= 0)
-                                print "</p></td></tr></table></div>\n";
-                } // end IF correspondent facets
+			if (count($genreform) <= 0)
+				print "</p></td></tr></table></div>\n";
+		} // end IF correspondent facets
 
-                if (count($genreform > 0)) {
-                        print "<p><strong>Document Type:</strong> <br />";
+		if (count($genreform > 0)) {
+			print "<p><strong>Document Type:</strong> <br />";
 
-                        if ($isGenre && ($isCorrespondent || $isDate)) {
-                              $newQ = urldecode($q);
-                              $newQ = str_replace($urlAllGenre,"",$newQ);
-                              $newQ = str_replace("AND  AND","AND",$newQ);
-                              print "<a class=\"noUnderline\" href=\"$url" . makeQuery($newQ) . "\">All</a>&#160&#187;<br />";
-                        }
+			if ($isGenre && ($isCorrespondent || $isDate)) {
+				$newQ = urldecode($q);
+				$newQ = str_replace($urlAllGenre,"",$newQ);
+				$newQ = str_replace("AND  AND","AND",$newQ);
+				print "<a class=\"noUnderline\" href=\"$url" . makeQuery($newQ) . "\">All</a>&#160&#187;<br />";
+			}
 
 
-                        foreach(array_keys($genreform) as $k) {
-                                if ($genreform[$k] > 0) {
-                                        $sortA = $sort . ";";
-                                        $qA = str_replace($sortA, "", $q);
-                                        $qA = makeQuery('genreform1_t:'. $k . ' AND ' . urldecode($qA));
-                                        $qA = str_replace("%253B", ";", $qA);
+			foreach(array_keys($genreform) as $k) {
+				if ($genreform[$k] > 0) {
+					$sortA = $sort . ";";
+					$qA = str_replace($sortA, "", $q);
+					$qA = makeQuery('genreform1_t:'. $k . ' AND ' . urldecode($qA));
+					$qA = str_replace("%253B", ";", $qA);
 					$genre = ucfirst($k);
 					if ($genre == "")
 						$genre = "none";
 					if (!$isGenre) 
-                                        	print "<a class=\"noUnderline\" href=\"$url" . $qA . $rows . "\">" . ucfirst($genre) . "</a> ($genreform[$k])<br />";
+						print "<a class=\"noUnderline\" href=\"$url" . $qA . $rows . "\">" . ucfirst($genre) . "</a> ($genreform[$k])<br />";
 					else
 						print ucfirst($genre) . " (" . $genreform[$k] . ")<br />";
-				} 
+				}
 			} // end FOREACH genreform
-                         print "</p></td></tr></table></div>\n";
-                } // end IF genreform facet		
+			print "</p></td></tr></table></div>\n";
+		} // end IF genreform facet		
 		
 		if (count($dateRanges) || count($correspondents))
 			 print "<table class=\"resultsList\" style=\"width:580px;\">\n<tr>\n";
 		else
-		
 			print "<table class=\"resultsList\">\n<tr>\n";
 	
 		$accepted_orders = array("document_id", "file_unittitle", "genreform1", "unitdate_iso");
@@ -942,7 +939,7 @@
 			}
 
 			if (isset($_GET['q']) && $_GET['q']) {
-				$url = str_replace("search.php", "search/", $_SERVER['PHP_SELF']) . "?q=" . $q; // . ";$sort";
+				$url = str_replace("search.php", "search/", $_SERVER['PHP_SELF']) . "?q=" . $q;
 			}
 
 			if ($accepted_orders[$i] == "document_id") {
@@ -951,42 +948,42 @@
 
 			else {
 				print "<th>\n";
-				if (stristr($lookFor, $sort)) { // && (stristr($sort, "asc"))) {
+				if (stristr($lookFor, $sort)) {
 					print '<img src="http://www.columbia.edu/cu/lweb/images/icons/az-off.gif" width="8" border="0" alt="" />';
 				}
 				else { 
 					print '<a href="';
 					if (str_replace($sort, $lookFor, $url)) {
 						print str_replace($sort,$lookFor,$url);
-                                	}
+					}
 					else if (str_replace(urlencode($sort), urlencode($lookFor), $url)) {
 						print str_replace(urlencode($sort),urlencode($lookFor),$url);
 					}
-                                	else
-                                        	print $url . '&sort=' . $lookFor;
-                                	print '"><img src="http://www.columbia.edu/cu/lweb/images/icons/az-on.gif" width="8" border="0" alt="" /></a>';
+					else
+						print $url . '&sort=' . $lookFor;
+					print '"><img src="http://www.columbia.edu/cu/lweb/images/icons/az-on.gif" width="8" border="0" alt="" /></a>';
 				}
 
 				print " $nice_names[$i] ";
 
-                        	$lookFor = urlencode($accepted_orders[$i]) . urlencode(" desc");
+				$lookFor = urlencode($accepted_orders[$i]) . urlencode(" desc");
 				if (stristr($lookFor, "genreform1"))
-                                	$lookFor .= urlencode(",pages desc");
+					$lookFor .= urlencode(",pages desc");
 
-                        	$opp = urlencode($accepted_orders[$i]) . urlencode(" asc");
+				$opp = urlencode($accepted_orders[$i]) . urlencode(" asc");
 
-				if ( stristr($lookFor, $sort)) { // && (stristr($sort, "desc")) ) {
-                                	print '<img src="http://www.columbia.edu/cu/lweb/images/icons/za-off.gif" width="8" border="0" alt="" />';
-                        	}
+				if ( stristr($lookFor, $sort)) {
+					print '<img src="http://www.columbia.edu/cu/lweb/images/icons/za-off.gif" width="8" border="0" alt="" />';
+				}
 
 				else {
 					print '<a href="';
 					if (str_replace($sort, $lookFor, $url)) {
 						print str_replace($sort, $lookFor, $url);
 					}
-                                        else if (str_replace(urlencode($sort), urlencode($lookFor), $url)) {
-                                                print str_replace(urlencode($sort),urlencode($lookFor),$url);
-                                        }
+					else if (str_replace(urlencode($sort), urlencode($lookFor), $url)) {
+						print str_replace(urlencode($sort),urlencode($lookFor),$url);
+					}
 					else
 						print $url . '&sort=' . $lookFor;
 					print '"><img src="http://www.columbia.edu/cu/lweb/images/icons/za-on.gif" width="8" border="0" alt="" /></a>';
@@ -1032,10 +1029,9 @@
 
 			print "</tr>\n";
 		} // end FOREACH $doc
-                        $img1 = "http://www.columbia.edu/cu/lweb/digital/collections/cul/texts/images/bookcitation-sm.gif";
-                        $img2 = "https://www1.columbia.edu/sec/cu/libraries/staffweb/img/assets/6635/key_cuid.gif"; //images/restricted.jpg";
+		$img1 = "http://www.columbia.edu/cu/lweb/digital/collections/cul/texts/images/bookcitation-sm.gif";
+		$img2 = "https://www1.columbia.edu/sec/cu/libraries/staffweb/img/assets/6635/key_cuid.gif";
 		print "</table>";
-		
 	} // end FUNCTION printList
 
 	function printSearch($docs, $sort, $dlo, $q, $numFound) {
