@@ -18,7 +18,7 @@ function makeQuery($query) {
         // example query looks like this: q=file_unittitle_t:example+AND+ocr:birthday;file_unittitle+asc
 
         // first, get sort
-        $sort = "file_unittitle_t asc";
+        $sort = "file_unittitle asc";
         $sortSlice = explode(";", $query);
         $year = $month = $day = $fromYear = $fromMonth = $fromDay = $toYear = $toMonth = $toDay = "";
 
