@@ -776,12 +776,12 @@
 
 		$noZeroes1 = $noZeroes2 = 0;
 		foreach(array_keys($dateRanges) as $f) {
-			if ($dateRanges[$f] != "0")
+			if ("{$dateRanges[$f]}" != "0")
 				$noZeroes1++;	
 		}
 
 		foreach(array_keys($correspondents) as $f) {
-			if ($correspondents[$f] != "0")
+			if ("{$correspondents[$f]}" != "0")
 				$noZeroes2++;
 		}
 
