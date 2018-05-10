@@ -1024,13 +1024,8 @@
 			else
 				echo 'n.d.';
 			print "</a></td>\n";
-			$img1 = "http://www.columbia.edu/cu/lweb/digital/collections/cul/texts/images/bookcitation-sm.gif";
-			$img2 = "https://www1.columbia.edu/sec/cu/libraries/staffweb/img/assets/6635/key_cuid.gif"; //images/restricted.jpg";
-
 			print "</tr>\n";
 		} // end FOREACH $doc
-		$img1 = "http://www.columbia.edu/cu/lweb/digital/collections/cul/texts/images/bookcitation-sm.gif";
-		$img2 = "https://www1.columbia.edu/sec/cu/libraries/staffweb/img/assets/6635/key_cuid.gif";
 		print "</table>";
 	} // end FUNCTION printList
 
